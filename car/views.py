@@ -26,12 +26,13 @@ import random
 
 # Create your views here.
 def index(request):
-    # return HttpResponse("this is homepage")
+    
     allcars = Car.objects.all().filter(vehicle_type = "Car")
     total_vehicles = allcars.count()
     context = {'allcars':allcars, 'total_vehicles':total_vehicles}
     return render(request, 'index-3.html', context)
 
+# list all cars on used car page
 def listing_classic(request):
     
     allcars = Car.objects.all()
@@ -44,6 +45,7 @@ def listing_classic(request):
     context = {'allcars':allcars, 'total_vehicles':total_vehicles}
     return render(request, 'listing-classic.html', context)
 
+# display car details
 def listing_detail(request, myid):
     
     car = Car.objects.filter(id=myid)
@@ -61,7 +63,7 @@ def listing_detail(request, myid):
 
     return render(request, 'listing-detail.html', context)
 
-
+# search page function
 def search(request):
     if request.method=='GET':
         car_city = request.GET.get('city')
@@ -97,16 +99,10 @@ def search(request):
 
         # total_vehicles = len(final_dict)
         total_vehicles = 6
-        
-        # creating djanog session for sorting
-        # equipments = [id for car in final_dict]
-        # request.session['search_session'] = equipments
+      
 
         context = {'result':final_dict, 'allcars':allcars, 'total_vehicles':total_vehicles}
 
-
-        # Start a session for search-> sort 
-        # request.session['allcars'] = result
 
         return render(request, 'search.html', context)
 
@@ -141,10 +137,6 @@ def search_sort(request):
         sort = request.GET.get('sort')
         print(sort)
         
-        
-        # using django sessions from search
-        # if request.session.get('search_session'):
-        #     sorted = request.session.get('search_session')
 
         # use session to get allcars from search page 
         all_search_page_cars = request.session.get('allcars')
@@ -462,15 +454,7 @@ def submit_otp(request):
         else:
             r_url = 'listing-detail.html/'+str(request.session['session_otp_car_id'])+'/#submit_otp'
             return redirect(r_url)
-        # user = authenticate(username=loginusername, password =loginpass)
-
-        # if user is not None:
-        #     login(request, user)
-        #     messages.success(request, "Successfully Logged In")
-        #     return redirect('/')
-        # else:
-        #     messages.error(request, "Invalid Credentials")
-        #     return redirect('/')
+        
     return HttpResponse("404- Not Found for submit otp")
 
 
@@ -479,7 +463,7 @@ def submit_otp(request):
 def generate_otp_message(request):
     rand_message = random.randint(1000, 9999)
     message = 'The OTP for BihariMotors is '+ str(rand_message)
-    apikey = "NmIzNzYxMzU2MjU3MzI2OTRiNTM1NDZlNDU1NzYyNDc="
+    apikey = ""
     phone_number =request.session['session_phone_number']
     print(phone_number)
     sendSMS(apikey, str(phone_number) ,'BihariMotors',message)
@@ -500,9 +484,6 @@ def sendSMS(apikey, numbers, sender, message):
     print(fr)
     return(fr)
  
-# resp =  sendSMS('apikey', '918123456789',
-#     'Jims Autos', 'This is your message')
-# print (resp)
 
 
 def disclaimer(request):
