@@ -6,13 +6,13 @@ Platform Capabilites:-
 
 Technology Used- Python, Django, JS, SQLite.
 
+Website Screen Recording-
 https://user-images.githubusercontent.com/32337899/146932560-04394d19-dcab-43ac-b958-bae768dc0807.mp4
 
 
 
-![alt text](https://github.com/vickytilotia/cardealer/blob/master/Homepage.JPG?raw=true)
 
-
+Some screenshots
 ![alt text](https://github.com/vickytilotia/cardealer/blob/master/used%20car.JPG?raw=true)
 
 
