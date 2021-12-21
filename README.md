@@ -6,7 +6,8 @@ Platform Capabilites:-
 
 Technology Used- Python, Django, JS, SQLite.
 
-Website Screen Recording-
+Website Screen Recording
+
 https://user-images.githubusercontent.com/32337899/146932560-04394d19-dcab-43ac-b958-bae768dc0807.mp4
 
 
