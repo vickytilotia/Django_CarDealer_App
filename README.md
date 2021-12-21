@@ -7,3 +7,8 @@ Platform Capabilites:-
 Technology Used- Python, Django, JS, SQLite.
 
 As this is a live project, for safety some of the files in this project are hidden including assests and images.
+
+
+
+
+![alt text](https://github.com/[vickytilotia]/[cardealer]/Homepage.jpg?raw=true)
