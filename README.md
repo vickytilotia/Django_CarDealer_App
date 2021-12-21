@@ -1,8 +1,8 @@
 This website provides a platform to sell and purchase used cars.
 
-Platform Capabilites:-
-1. Customer can list their used car for sell.
-2. Customer can search used car among the platform and can get contact information of the car Owner.
+Platform Capabilities:-
+1. Customer can list their used car for sale.
+2. Customers can search for used cars on the platform and can get the contact information of the car owner.
 
 Technology Used- Python, Django, JS, SQLite.
 
