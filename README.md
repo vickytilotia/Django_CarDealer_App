@@ -11,4 +11,4 @@ As this is a live project, for safety some of the files in this project are hidd
 
 
 
-![alt text](https://github.com/vickytilotia/cardealer/blob/Homepage.jpg?raw=true)
+![alt text](https://github.com/vickytilotia/cardealer/blob/master/Homepage.JPG?raw=true)
