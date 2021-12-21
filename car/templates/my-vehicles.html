@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}My Vehicles{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'assets/css/owl.transitions.css' %}" type="text/css">
+{% endblock %}
+
+{% block body %}
+<!--Page Header-->
+<section class="page-header profile_page">
+  <div class="container">
+    <div class="page-header_wrap">
+      <div class="page-heading">
+        <h1>My Vehicles</h1>
+      </div>
+      <ul class="coustom-breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li>My Vehicles</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Dark Overlay-->
+  <div class="dark-overlay"></div>
+</section>
+<!-- /Page Header--> 
+
+<!--my-vehicles-->
+<section class="user_profile inner_pages">
+  <div class="container">
+  <!--
+    <div class="user_profile_info gray-bg padding_4x4_40">
+      <div class="upload_user_logo"> <img src="{% static 'assets/images/dealer-logo.jpg' %}" alt="image">
+        <div class="upload_newlogo">
+          <input name="upload" type="file">
+        </div>
+      </div>
+      <div class="dealer_info">
+        <h5>Autospot Used Cars Center </h5>
+        <p>P.1225 N Broadway Ave <br>
+          Oklahoma City, OK  1234-5678-090</p>
+      </div>
+    </div>
+    -->
+    <div class="row">
+      <div class="col-md-3 col-sm-3">
+        <div class="profile_nav">
+          <ul>
+            <li><a href="profile-settings.html">Change Password</a></li>
+            <li class="active"><a href="my-vehicles.html">My Vehicles</a></li>
+            <li><a href="post-vehicle.html">Post a Vehicles</a></li>
+            <li><a href="/logout">Sign Out</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-8">
+        <div class="profile_wrap">
+          <h5 class="uppercase underline">My Vehicles <span>(20 Cars)</span></h5>
+          <div class="my_vehicles_list">
+            <ul class="vehicle_listing">
+
+            {% for car in cars%}
+              <li>
+                <div class="vehicle_img"> <a href="#"><img src="{{car.car_photo.url}}" alt="image"></a> </div>
+                <div class="vehicle_title">
+                  <h6><a href="#">{{car.car_title|title}} </a></h6>
+                </div>
+                <div class="vehicle_status"> 
+                <a href="" class="btn outline btn-xs active-btn">Active</a>
+                  <div class="clearfix"></div>
+                  <form action="/delete_vehicles/{{car.id}}/" method="post">
+                    {% csrf_token %}
+                  
+                  <div class="form-group">
+                  <button type="submit" > 
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                  </button> 
+                  </div>
+                  </form>
+                  </div>
+              </li>
+              {% endfor %}
+
+
+            </ul>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--/my-vehicles--> 
+
+
+
+{% endblock %}

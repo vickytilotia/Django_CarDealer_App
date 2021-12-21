@@ -1,0 +1,533 @@
+{% load static %}
+{% load humanize %}
+<!DOCTYPE HTML>
+<html lang="en">
+
+<!-- {% static 'webaddr' %} -->  
+
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<title>Website Name | {% block title %}{% endblock %} </title>
+<!--Bootstrap -->
+<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" type="text/css">
+<!--OWL Carousel slider-->
+<link rel="stylesheet" href="{% static 'assets/css/owl.carousel.css' %}" type="text/css">
+<!--Custome Style -->
+<link rel="stylesheet" href="{% static 'assets/css/style.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'assets/css/home-new.css' %}" type="text/css">
+<!--FontAwesome Font Style -->
+<!--slick-slider -->
+<link href="{% static 'assets/css/slick.css' %}" rel="stylesheet">
+<!--bootstrap-slider -->
+<link href="{% static 'assets/css/bootstrap-slider.min.css' %}" rel="stylesheet">
+<link href="{% static 'assets/css/font-awesome.min.css' %}" rel="stylesheet">
+<!-- Fav and touch icons -->
+<!-- SWITCHER -->
+		<link rel="stylesheet" id="switcher-css" type="text/css" href="{% static 'assets/switcher/css/switcher.css' %}" media="all" />
+		<link rel="alternate stylesheet" type="text/css" href="{% static 'assets/switcher/css/red.css' %}" title="red" media="all" data-default-color="true" />
+		<link rel="alternate stylesheet" type="text/css" href="{% static 'assets/switcher/css/orange.css' %}" title="orange" media="all" />
+		<link rel="alternate stylesheet" type="text/css" href="{% static 'assets/switcher/css/blue.css' %}" title="blue" media="all" />
+		<link rel="alternate stylesheet" type="text/css" href="{% static 'assets/switcher/css/pink.css' %}" title="pink" media="all" />
+		<link rel="alternate stylesheet" type="text/css" href="{% static 'assets/switcher/css/green.css' %}" title="green" media="all" />
+		<link rel="alternate stylesheet" type="text/css" href="{% static 'assets/switcher/css/purple.css' %}" title="purple" media="all" />
+        
+<!-- Fav and touch icons -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static 'assets/images/favicon-icon/apple-touch-icon-144-precomposed.png' %}">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static 'assets/images/favicon-icon/apple-touch-icon-114-precomposed.html' %}">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static 'assets/images/favicon-icon/apple-touch-icon-72-precomposed.png' %}">
+<link rel="apple-touch-icon-precomposed" href="{% static 'assets/images/favicon-icon/apple-touch-icon-57-precomposed.png' %}">
+<link rel="shortcut icon" href="{% static 'assets/images/favicon-icon/favicon.png' %}">
+<!-- Google-Font-->
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<style>
+#avatar {
+    margin-top:10px;
+    margin-bottom:10px;
+    width: 100%;
+
+}
+@media screen and (max-width: 480px) {
+    #avatar {
+        margin-top:10px;
+        margin-bottom:10px;
+        width: 100%;
+    }
+}
+</style>
+
+
+<!--For extra custom css or fonts-->
+    {% block css %}
+    {% endblock %}
+
+</head>
+
+<body>
+<!-- Start Switcher 
+<div class="switcher-wrapper">	
+    <div class="demo_changer">
+        <div class="demo-icon customBgColor"><i class="fa fa-cog fa-spin fa-2x"></i></div>
+        <div class="form_holder">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="predefined_styles">
+                        <div class="skin-theme-switcher">
+                            <h4>Color</h4>
+                            <a href="#" data-switchcolor="red" class="styleswitch" style="background-color:#de302f;"> </a>
+                            <a href="#" data-switchcolor="orange" class="styleswitch" style="background-color:#f76d2b;"> </a>
+                            <a href="#" data-switchcolor="blue" class="styleswitch" style="background-color:#228dcb;"> </a>
+                            <a href="#" data-switchcolor="pink" class="styleswitch" style="background-color:#FF2761;"> </a>
+                            <a href="#" data-switchcolor="green" class="styleswitch" style="background-color:#2dcc70;"> </a>
+                            <a href="#" data-switchcolor="purple" class="styleswitch" style="background-color:#6054c2;"> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ /Switcher -->  
+
+<!-- Ad modal-->
+<div class="modal fade" id="popupModal">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title"></h3>
+      </div>
+      <div class="modal-body">
+        
+          <div class="myimgcontainer">
+          <a href="{{ad.popup_ad_url}}">
+          <img id="avatar" src="{{ad.popup_ad.url}}" alt="Image not found" >
+          </a>
+          </div>
+      </div>
+     
+    </div>
+  </div>
+</div>
+<!-- Ad modal-->
+
+<div id = "content-wrapper" class="d-flex flex-column">
+
+<div>
+{% if messages %}
+    <ul class="messages">
+    {% for message in messages %}
+    <div class="alert alert-success m-2" id="msg" role="alert">
+    {{ message }}
+    </div>
+    {% endfor %}
+</ul>
+{% endif %}
+</div>
+
+</div>
+
+<!-- Header -->
+<header class="header_style2 nav-stacked affix-top" data-spy="affix" data-offset-top="1">
+  <!-- Navigation -->
+  <nav id="navigation_bar" class="navbar navbar-expand-lg">
+    <div class="container">
+	<div class="row header-row">
+      <div class="navbar-header">
+      	<div class="logo"> <a href="/index.html"><img src="{% static 'assets/images/logo.png' %}" alt="image"/></a> </div>
+		
+        <button id="menu_slide" data-target="#navigation" aria-expanded="false" data-toggle="collapse" class="navbar-toggler" type="button"> 
+        	<i class="fa fa-bars"></i>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="navigation">
+        <ul class="nav navbar-nav">
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="/listing-classic.html">Used Car</a></li>
+		  <li><a href="/post-vehicle.html">Sell My Car</a></li>
+		  <li><a href="/about-us.html">About Us</a></li>
+		  <!-- These are other menu options i.e. inventory, dealers, pages and news.
+          <li class="dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Inventory</a>
+            <ul class="dropdown-menu">
+              <li><a href="listing-grid.html">Grid Style</a></li>
+              <li><a href="listing-classic.html">Classic Style</a></li>
+              <li><a href="listing-detail.html">Detail Page Style 1</a></li>
+              <li><a href="listing-detail-2.html">Detail Page Style 2</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dealers</a>
+            <ul class="dropdown-menu">
+              <li><a href="dealers-list.html">List View</a></li>
+              <li><a href="dealers-profile.html">Detail Page</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
+            <ul class="dropdown-menu">
+              <li><a href="services.html">Services</a></li>
+              <li><a href="contact-us.html">Contact Us</a></li>
+              <li><a href="compare.html">Compare Vehicles</a></li>
+              <li><a href="faq.html">FAQ</a></li>
+              <li><a href="404.html">404 Error</a></li>
+              <li><a href="coming-soon.html">Coming Soon</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
+            <ul class="dropdown-menu">
+              <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
+              <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
+              <li><a href="blog-detail.html">Blog Detail</a></li>
+            </ul>
+          </li>
+		  -->
+        </ul>
+      </div>
+      
+      <div class="header_wrap">
+        <div class="user_login">
+          <ul>
+            <li class="dropdown"> <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle" aria-hidden="true"></i></a>
+              <ul class="dropdown-menu">
+                {% if user.is_authenticated %}
+                <li class="text-primary"><strong>Welcome {{request.user}}</strong></li>
+                {% endif%}
+                
+                <li><a href="/profile-settings.html">Change Password</a></li>
+                <li><a href="/my-vehicles.html">My Vehicles</a></li>
+                <li><a href="/post-vehicle.html">Post a Vehicle</a></li>
+                <li><a href="/logout">Sign Out</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        {% if user.is_authenticated %}
+        <div class="login_btn"> <a href="/logout" class="btn btn-xs uppercase" >LogOut</a> 
+        </div>
+        {% else%}
+        <div class="login_btn"> <a href="" class="btn btn-xs uppercase" data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Login / Register</a> 
+        </div>
+        {% endif%}
+         
+      </div>
+      </div>
+    </div>
+  </nav>
+  <!-- Navigation end --> 
+  
+</header>
+<!-- /Header --> 
+
+
+<!-- Main body of each html pages -->
+
+{% block body %}
+{% endblock %}
+
+
+<!-- Quick-Join 
+<section class="brand-section gray-bg">
+  <div class="container">
+    <div class="brand-hadding">
+      <h5>Popular Brands</h5>
+    </div>
+    <div class="brand-logo-list">
+      <div id="popular_brands">
+        <div><a href="#"><img src="{% static 'assets/images/brand-logo-1.png' %}" class="img-fluid" alt="image"></a></div>
+        <div><a href="#"><img src="{% static 'assets/images/brand-logo-2.png' %}" class="img-fluid" alt="image"></a></div>
+        <div><a href="#"><img src="{% static 'assets/images/brand-logo-3.png' %}" class="img-fluid" alt="image"></a></div>
+        <div><a href="#"><img src="{% static 'assets/images/brand-logo-4.png' %}" class="img-fluid" alt="image"></a></div>
+        <div><a href="#"><img src="{% static 'assets/images/brand-logo-5.png' %}" class="img-fluid" alt="image"></a></div>
+      </div>
+    </div>
+  </div>
+</section>
+ Quick-Join -->
+
+<!-- Footer -->
+<footer>
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-6">
+          <h6>Top Categores</h6>
+          <ul>
+            <li><a href="/listing-classic.html">Used Cars</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <h6>About Us</h6>
+          <ul>
+            <li><a href="/privacy.html">Privacy and Policy</a></li>
+            <li><a href="/disclaimer">Disclaimer</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <h6>Genral Information</h6>
+
+          <ul>
+            <label for="terms_agree">Biharimotors.com Never calls or email or contact with any type of method for selling or purchasing of any vehicle. <a href="/disclaimer">Read Disclaimer</a></label>
+          </ul>
+        </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-push-6 text-right">
+          <div class="footer_widget">
+            <p></p>
+            <ul>
+             </ul>
+          </div>
+          <div class="footer_widget">
+            <p>Developed By:</p>
+            <ul>
+              <li><a href="https://www.linkedin.com/in/vivek-kumar-004941145/">Vickytilotia</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-6 col-md-pull-6">
+          <p class="copy-right">Copyright &copy; 2021 Biharimotors.com. All Rights Reserved</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- /Footer -->
+
+
+<!--Back to top-->
+<div id="back-top" class="back-top"> <a href="#top"><i class="fa fa-angle-up" aria-hidden="true"></i> </a> </div>
+<!--/Back to top--> 
+
+
+
+<!--Login-Form -->
+<div class="modal fade" id="loginModal">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title">Login</h3>
+      </div>
+      <div class="modal-body">
+        
+          <div class="login_wrap">
+		  	{% if error_message %}
+                <p><strong id="error">{{ error_message }}</strong></p>
+            {% endif %}
+            
+              <form action="/login" method="post">
+              {% csrf_token %}
+                
+                <div class="form-group">
+                  <input type="text" class="form-control" id="loginusername" name="loginusername" placeholder="Username or Email address*"  required>
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control" id="loginpass" name="loginpass" placeholder="Password*"  required>
+                </div>
+                <div class="form-group">
+                  <input type="submit" value="Login" class="btn btn-block">
+                </div>
+              </form>
+            
+            <!-- login with google plus
+            <div class="col-md-6 col-sm-6">
+              <h6 class="gray_text">Login the Quick Way</h6>
+              <a href="#" class="btn btn-block facebook-btn"><i class="fa fa-facebook-square" aria-hidden="true"></i> Login with Facebook</a> <a href="#" class="btn btn-block twitter-btn"><i class="fa fa-twitter-square" aria-hidden="true"></i> Login with Twitter</a> <a href="#" class="btn btn-block googleplus-btn"><i class="fa fa-google-plus-square" aria-hidden="true"></i> Login with Google+</a> 
+            </div>
+            <div class="mid_divider"></div>
+            -->
+          
+        </div>
+      </div>
+      <div class="modal-footer text-center">
+        <p>Don't have an account? <a href="" data-toggle="modal" data-target ="#signupModal" data-dismiss="modal">Signup Here</a></p></br>
+        <p><a href="#forgotpassword" data-toggle="modal" data-dismiss="modal">Forgot Password ?</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+<!--/Login-Form --> 
+
+
+
+<!--Register-Form -->
+<div class="modal fade" id="signupModal">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title">Sign Up</h3>
+      </div>
+      <div class="modal-body">
+		  	{% if error_message %}
+                <p><strong id="error">{{ error_message }}</strong></p>
+            {% endif %}        
+          <div class="signup_wrap">
+		  {% if error_message %}
+                <p><strong id="error">{{ error_message }}</strong></p>
+          {% endif %}
+            
+              <form action="/signup" method="post">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="username" name="username" placeholder="Username"  required>
+                </div>
+                <div class="form-group">
+                  <input type="email" class="form-control" id="email" name="email"  placeholder="Email Address"  required>
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control" id="pass1" name="pass1"  placeholder="Password"  required>
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control" id="pass2" name="pass2"  placeholder="Confirm Password"  required>
+                </div>
+                <div class="form-group checkbox">
+                  <input type="checkbox" id="terms_agree" required>
+                  <label for="terms_agree">I Agree with <a href="/privacy.html">Terms and Conditions</a></label>
+                </div>
+                <div class="form-group">
+                    {% csrf_token %}
+                  <input type="submit" value="Sign Up" class="btn btn-block">
+                  <label for="terms_agree">*Please Mark <a href="/privacy.html">Terms and Conditions</a></label>
+                </div>
+              </form>
+            <!--
+            <div class="col-md-6 col-sm-6">
+              <h6 class="gray_text">Login the Quick Way</h6>
+              <a href="#" class="btn btn-block facebook-btn"><i class="fa fa-facebook-square" aria-hidden="true"></i> Login with Facebook</a> <a href="#" class="btn btn-block twitter-btn"><i class="fa fa-twitter-square" aria-hidden="true"></i> Login with Twitter</a> <a href="#" class="btn btn-block googleplus-btn"><i class="fa fa-google-plus-square" aria-hidden="true"></i> Login with Google+</a> </div>
+            <div class="mid_divider"></div>
+            -->
+          
+        </div>
+      </div>
+      <div class="modal-footer text-center">
+        <p>Already got an account? <a href="#loginModal" data-toggle="modal" data-dismiss="modal">Login Here</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+<!--/Register-Form --> 
+
+<!--Forgot-password-Form -->
+<div class="modal fade" id="forgotpassword">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title">Password Recovery</h3>
+      </div>
+		  	{% if error_message %}
+                <p><strong id="error">{{ error_message }}</strong></p>
+            {% endif %}
+      <div class="modal-body">
+        <div class="row">
+          <div class="forgotpassword_wrap">
+            <div class="col-md-12">
+              <form action="#" method="get">
+                <div class="form-group">
+                  <input type="email" class="form-control" placeholder="Your Email address*">
+                </div>
+                <div class="form-group">
+                  <input type="submit" value="Reset My Password" class="btn btn-block">
+                </div>
+              </form>
+              <div class="text-center">
+                <p class="gray_text">For security reasons we don't store your password. Your password will be reset and a new one will be send.</p>
+                <p><a href="#loginModal" data-toggle="modal" data-dismiss="modal"><i class="fa fa-angle-double-left" aria-hidden="true"></i> Back to Login</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--/Forgot-password-Form --> 
+
+<!--To remove messages after 2 seconds-->
+<script>
+setTimeout(function(){
+    if ($('#msg').length >0 ) {
+        $('#msg').remove();
+
+        }
+    },2000)
+        
+</script>
+
+
+<!-- Scripts --> 
+<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap.min.js' %}"></script> 
+<script src="{% static 'assets/js/interface.js' %}"></script> 
+<!--Switcher-->
+<script src="{% static 'assets/switcher/js/switcher.js' %}"></script>
+<!--bootstrap-slider-JS--> 
+<script src="{% static 'assets/js/bootstrap-slider.min.js' %}"></script> 
+<!--Slider-JS--> 
+<script src="{% static 'assets/js/slick.min.js' %}"></script> 
+<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+
+<!-- Custom scripts for this template -->
+
+
+
+    {% block scripts %}
+    {% endblock %}
+
+
+<script>
+$(document).ready(function() {
+
+  if(window.location.href.indexOf('#loginModal') != -1) {
+    event.preventDefault();
+    jQuery.noConflict();
+    $('#loginModal').modal('show');
+  }
+
+});
+</script>
+
+<script>
+$(document).ready(function() {
+
+  if(window.location.href.indexOf('#signupModal') != -1) {
+    event.preventDefault();
+    jQuery.noConflict();
+    $('#signupModal').modal('show');
+  }
+
+});
+</script>
+
+{% comment %} <script>
+$(document).ready(function() {
+    $('#popupModal').modal('show');
+}, 5000);
+</script> {% endcomment %}
+
+
+<script>
+setInterval(function () {
+   $('#popupModal').modal('show');
+}, 60000);
+</script>
+</body>
+
+
+</html>
+

@@ -1,0 +1,630 @@
+{% load static %}
+
+<!DOCTYPE HTML>
+<html lang="en">
+
+<!-- {% static 'webaddr' %} -->  
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<title>CarForYou</title>
+<!--Bootstrap -->
+<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" type="text/css">
+<!--OWL Carousel slider-->
+<link rel="stylesheet" href="{% static 'assets/css/owl.carousel.css' %}" type="text/css">
+<!--Custome Style -->
+<link rel="stylesheet" href="{% static 'assets/css/style.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'assets/css/home-new.css' %}" type="text/css">
+<!--FontAwesome Font Style -->
+<!--slick-slider -->
+<link href="{% static 'assets/css/slick.css' %}" rel="stylesheet">
+<!--bootstrap-slider -->
+<link href="{% static 'assets/css/bootstrap-slider.min.css' %}" rel="stylesheet">
+<link href="{% static 'assets/css/font-awesome.min.css' %}" rel="stylesheet">
+<!-- Fav and touch icons -->
+<!-- SWITCHER -->
+		<link rel="stylesheet" id="switcher-css" type="text/css" href="{% static 'assets/switcher/css/switcher.css' %}" media="all" />
+		<link rel="alternate stylesheet" type="text/css" href="{% static 'assets/switcher/css/red.css' %}" title="red" media="all" data-default-color="true" />
+		<link rel="alternate stylesheet" type="text/css" href="{% static 'assets/switcher/css/orange.css' %}" title="orange" media="all" />
+		<link rel="alternate stylesheet" type="text/css" href="{% static 'assets/switcher/css/blue.css' %}" title="blue" media="all" />
+		<link rel="alternate stylesheet" type="text/css" href="{% static 'assets/switcher/css/pink.css' %}" title="pink" media="all" />
+		<link rel="alternate stylesheet" type="text/css" href="{% static 'assets/switcher/css/green.css' %}" title="green" media="all" />
+		<link rel="alternate stylesheet" type="text/css" href="{% static 'assets/switcher/css/purple.css' %}" title="purple" media="all" />
+        
+<!-- Fav and touch icons -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static 'assets/images/favicon-icon/apple-touch-icon-144-precomposed.png' %}">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static 'assets/images/favicon-icon/apple-touch-icon-114-precomposed.html' %}">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static 'assets/images/favicon-icon/apple-touch-icon-72-precomposed.png' %}">
+<link rel="apple-touch-icon-precomposed" href="{% static 'assets/images/favicon-icon/apple-touch-icon-57-precomposed.png' %}">
+<link rel="shortcut icon" href="{% static 'assets/images/favicon-icon/favicon.png' %}">
+<!-- Google-Font-->
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body>
+<!-- Start Switcher 
+<div class="switcher-wrapper">	
+    <div class="demo_changer">
+        <div class="demo-icon customBgColor"><i class="fa fa-cog fa-spin fa-2x"></i></div>
+        <div class="form_holder">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="predefined_styles">
+                        <div class="skin-theme-switcher">
+                            <h4>Color</h4>
+                            <a href="#" data-switchcolor="red" class="styleswitch" style="background-color:#de302f;"> </a>
+                            <a href="#" data-switchcolor="orange" class="styleswitch" style="background-color:#f76d2b;"> </a>
+                            <a href="#" data-switchcolor="blue" class="styleswitch" style="background-color:#228dcb;"> </a>
+                            <a href="#" data-switchcolor="pink" class="styleswitch" style="background-color:#FF2761;"> </a>
+                            <a href="#" data-switchcolor="green" class="styleswitch" style="background-color:#2dcc70;"> </a>
+                            <a href="#" data-switchcolor="purple" class="styleswitch" style="background-color:#6054c2;"> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ /Switcher -->  
+
+<!-- Header -->
+<header class="header_style2 nav-stacked affix-top" data-spy="affix" data-offset-top="1">
+  <!-- Navigation -->
+  <nav id="navigation_bar" class="navbar navbar-expand-lg">
+    <div class="container">
+	<div class="row header-row">
+      <div class="navbar-header">
+      	<div class="logo"> <a href="index.html"><img src="{% static 'assets/images/logo.png' %}" alt="image"/></a> </div>
+		
+        <button id="menu_slide" data-target="#navigation" aria-expanded="false" data-toggle="collapse" class="navbar-toggler" type="button"> 
+        	<i class="fa fa-bars"></i>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="navigation">
+        <ul class="nav navbar-nav">
+          <li class="dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home</a>
+          	 <ul class="dropdown-menu">
+              <li><a href="index.html">Home Page 1</a></li>
+              <li><a href="index-2.html">Home Page 2</a></li>
+			  <li><a href="index-3.html">Home Page 3</a></li>
+            </ul>
+          </li>
+          <li><a href="listing-classic.html">Used Car</a></li>
+		  <li><a href="listing-classic.html">Sell My Car</a></li>
+		  <li><a href="about-us.html">About Us</a></li>
+		  <!-- These are other menu options i.e. inventory, dealers, pages and news.
+          <li class="dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Inventory</a>
+            <ul class="dropdown-menu">
+              <li><a href="listing-grid.html">Grid Style</a></li>
+              <li><a href="listing-classic.html">Classic Style</a></li>
+              <li><a href="listing-detail.html">Detail Page Style 1</a></li>
+              <li><a href="listing-detail-2.html">Detail Page Style 2</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dealers</a>
+            <ul class="dropdown-menu">
+              <li><a href="dealers-list.html">List View</a></li>
+              <li><a href="dealers-profile.html">Detail Page</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
+            <ul class="dropdown-menu">
+              <li><a href="services.html">Services</a></li>
+              <li><a href="contact-us.html">Contact Us</a></li>
+              <li><a href="compare.html">Compare Vehicles</a></li>
+              <li><a href="faq.html">FAQ</a></li>
+              <li><a href="404.html">404 Error</a></li>
+              <li><a href="coming-soon.html">Coming Soon</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
+            <ul class="dropdown-menu">
+              <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
+              <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
+              <li><a href="blog-detail.html">Blog Detail</a></li>
+            </ul>
+          </li>
+		  -->
+        </ul>
+      </div>
+      
+      <div class="header_wrap">
+        <div class="user_login">
+          <ul>
+            <li class="dropdown"> <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle" aria-hidden="true"></i></a>
+              <ul class="dropdown-menu">
+                <li><a href="profile-settings.html">Profile Settings</a></li>
+                <li><a href="my-vehicles.html">My Vehicles</a></li>
+                <li><a href="post-vehicle.html">Post a Vehicle</a></li>
+                <li><a href="#">Sign Out</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+         <div class="login_btn"> <a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal" data-dismiss="modal">Login / Register</a> </div>
+      </div>
+      </div>
+    </div>
+  </nav>
+  <!-- Navigation end --> 
+  
+</header>
+<!-- /Header --> 
+
+<!-- Intro -->
+<section id="intro-3">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5">
+				
+					<div class="sidebar_widget sidebar_3">
+
+    
+						<div class="widget_heading">
+
+						  <h5><i class="fa fa-filter" aria-hidden="true"></i>Find Your Dream Car</h5>
+
+						</div>
+
+    
+					<div class="sidebar_filter">
+
+					<form action="#" method="get">
+					<div class="row">
+        <div class="form-group col-md-6">
+          <div class="select">
+            <select class="form-control">
+              <option value="">Select Location </option>
+              <option value="">Location 1 </option>
+              <option value="">Location 1 </option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <div class="select">
+            <select class="form-control">
+              <option>Select Brand</option>
+              <option>Brand 1</option>
+              <option>Brand 2</option>
+              <option>Brand 3</option>
+              <option>Brand 3</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <div class="select">
+            <select class="form-control">
+              <option>Select Model</option>
+              <option>Series 1</option>
+              <option>Series 2</option>
+              <option>Series 3</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <div class="select">
+            <select class="form-control">
+              <option>Year of Model </option>
+              <option>2016</option>
+              <option>2015</option>
+              <option>2014</option>
+            </select>
+          </div>
+        </div>
+		<div class="form-group col-md-6">
+			<div class="select">
+			   <select class="form-control" name="fueltype">
+				<option value=""> Vehicle Fuel Type</option>
+				<option value="Diesel">Diesel</option>
+				<option value="Petrol">Petrol </option>
+				<option value="Autogas">Autogas</option>
+			  </select>
+			</div>
+		</div>
+		<div class="form-group col-md-6">
+          <div class="select">
+            <select class="form-control">
+              <option>Type of Car </option>
+              <option>New Car</option>
+              <option>Used Car</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group col-md-12">
+          <label class="form-label">Price Range ($)</label>
+          <input id="price_range" type="text" class="span2" value="" data-slider-min="50" data-slider-max="6000" data-slider-step="5" data-slider-value="[1000,5000]"/>
+        </div>
+        
+        <div class="form-group col-md-12">
+          <button type="submit" class="btn btn-block"><i class="fa fa-search" aria-hidden="true"></i> Search Car </button>
+        </div>
+		</div>
+      </form>
+
+
+					</div>
+
+				  </div>
+				
+				
+			</div>
+			<div class="col-md-7">
+				<div class="intro-img-wp">
+					<img src="{% static 'assets/images/car-img-01.png' %}" alt="image">
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- /Intro -->
+
+<!-- How-it-work -->
+<section id="how-work" class="section-padding">
+	<div class="container">
+		<div class="section-header heading-3 text-center">
+			<h2>How it Work</h2>
+			<p>Helps you to find perfect car. But I must explain to you how all this mistaken</p>
+		</div>
+		<div class="row">
+			<div class="col-md-3 col-sm-6">
+				<div class="work-steps">
+					<div class="icon-wrap">
+						<img src="{% static 'assets/images/icon-80x80.png' %}" alt="icon">
+					</div>
+					<h5>Search Our Inventory</h5>
+					<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium</p>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-6">
+				<div class="work-steps">
+					<div class="icon-wrap">
+						<img src="{% static 'assets/images/icon-80x80-2.png' %}" alt="icon">
+					</div>
+					<h5>Choose The Car You Like</h5>
+					<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium</p>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-6">
+				<div class="work-steps">
+					<div class="icon-wrap">
+						<img src="{% static 'assets/images/icon-80x80-3.png' %}" alt="icon">
+					</div>
+					<h5>Apply For Auto Finance</h5>
+					<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium</p>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-6">
+				<div class="work-steps">
+					<div class="icon-wrap">
+						<img src="{% static 'assets/images/icon-80x80-4.png' %}" alt="icon">
+					</div>
+					<h5>Get Approved & Drive</h5>
+					<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- /How-it-work -->
+
+<!-- Why-Choose-Us -->
+<section id="why-choose">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="image-rightside">
+					<img src="{% static 'assets/images/car-img-02.png' %}" alt="image">
+				</div>
+			</div>
+			<div class="col-md-6">
+				<h2>Why choose Cash My Car?</h2>
+				<p>How do we compare with other ways to sell?</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed eiusmod tempor incididu et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ull laboris aliquip ex ea commodo consequat. Duis aute irure dolorin reprehenderits volupta velit dolore fugiat nulla pariatur excepteur sint occaecat cupidatat.</p>
+				<ul>
+					<li><i class="fa fa-check-circle"></i> Fast and easy</li>
+					<li><i class="fa fa-check-circle"></i> Transparent inspection</li>
+					<li><i class="fa fa-check-circle"></i> Immediate offer</li>
+					<li><i class="fa fa-check-circle"></i> Hassle free paperwork</li>
+					<li><i class="fa fa-check-circle"></i> Secure payment transactions</li>
+				</ul>
+				<a href="#" class="btn">Book a free Inspection</a>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- /Why-Choose-Us -->
+
+<!-- Featured-LIsting -->
+<section id="featured-listings" class="section-padding">
+	<div class="container">
+		<div class="section-header heading-3 text-center">
+			<h2>Our Vehicles Listing</h2>
+			<p>Helps you to find perfect car. But I must explain to you how all this mistaken</p>
+		</div>	
+		<div class="row">
+			<div class="col-md-4 col-sm-6">
+				<div class="featured-listing-wrap">
+					<div class="listing-image">
+						<a href="#"><img src="{% static 'assets/images/featured-img-03.jpg' %}" alt="image"></a>
+						<div class="label_icon">New</div>
+						<div class="compare_item">
+						  <div class="checkbox">
+							<input type="checkbox" id="compare3">
+							<label for="compare3">Compare</label>
+						  </div>
+						</div>
+					</div>
+					<h4><a href="#">Mercedes-Benz CLA</a></h4>
+					<p class="listing-price">31.72 - 36.99 Lakh</p>
+					<div class="listing-meta">
+						<ul>
+							<li>Diesel/Petrol</li>					
+							<li>15.04 to 17.9 kmpl</li>
+							<li>Automatic</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6">
+				<div class="featured-listing-wrap">
+					<div class="listing-image">
+						<a href="#"><img src="{% static 'assets/images/featured-img-01.jpg' %}" alt="image"></a>
+						<div class="label_icon">New</div>
+						<div class="compare_item">
+						  <div class="checkbox">
+							<input type="checkbox" id="compare3">
+							<label for="compare3">Compare</label>
+						  </div>
+						</div>
+					</div>
+					<h4><a href="#">Mercedes-Benz CLA</a></h4>
+					<p class="listing-price">31.72 - 36.99 Lakh</p>
+					<div class="listing-meta">
+						<ul>
+							<li>Diesel/Petrol</li>					
+							<li>15.04 to 17.9 kmpl</li>
+							<li>Automatic</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6">
+				<div class="featured-listing-wrap">
+					<div class="listing-image">
+						<a href="#"><img src="{% static 'assets/images/featured-img-02.jpg' %}" alt="image"></a>
+						<div class="label_icon">New</div>
+						<div class="compare_item">
+						  <div class="checkbox">
+							<input type="checkbox" id="compare3">
+							<label for="compare3">Compare</label>
+						  </div>
+						</div>
+					</div>
+					<h4><a href="#">Mercedes-Benz CLA</a></h4>
+					<p class="listing-price">31.72 - 36.99 Lakh</p>
+					<div class="listing-meta">
+						<ul>
+							<li>Diesel/Petrol</li>					
+							<li>15.04 to 17.9 kmpl</li>
+							<li>Automatic</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6">
+				<div class="featured-listing-wrap">
+					<div class="listing-image">
+						<a href="#"><img src="{% static 'assets/images/featured-img-03.jpg' %}" alt="image"></a>
+						<div class="label_icon">Used</div>
+						<div class="compare_item">
+						  <div class="checkbox">
+							<input type="checkbox" id="compare3">
+							<label for="compare3">Compare</label>
+						  </div>
+						</div>
+					</div>
+					<h4><a href="#">Mercedes-Benz CLA</a></h4>
+					<p class="listing-price">31.72 - 36.99 Lakh</p>
+					<div class="listing-meta">
+						<ul>
+							<li>Diesel/Petrol</li>					
+							<li>15.04 to 17.9 kmpl</li>
+							<li>Automatic</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6">
+				<div class="featured-listing-wrap">
+					<div class="listing-image">
+						<a href="#"><img src="{% static 'assets/images/featured-img-01.jpg' %}" alt="image"></a>
+						<div class="label_icon">Used</div>
+						<div class="compare_item">
+						  <div class="checkbox">
+							<input type="checkbox" id="compare3">
+							<label for="compare3">Compare</label>
+						  </div>
+						</div>
+					</div>
+					<h4><a href="#">Mercedes-Benz CLA</a></h4>
+					<p class="listing-price">31.72 - 36.99 Lakh</p>
+					<div class="listing-meta">
+						<ul>
+							<li>Diesel/Petrol</li>					
+							<li>15.04 to 17.9 kmpl</li>
+							<li>Automatic</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6">
+				<div class="featured-listing-wrap">
+					<div class="listing-image">
+						<a href="#"><img src="{% static 'assets/images/featured-img-02.jpg' %}" alt="image"></a>
+						<div class="label_icon">Used</div>
+						<div class="compare_item">
+						  <div class="checkbox">
+							<input type="checkbox" id="compare3">
+							<label for="compare3">Compare</label>
+						  </div>
+						</div>
+					</div>
+					<h4><a href="#">Mercedes-Benz CLA</a></h4>
+					<p class="listing-price">31.72 - 36.99 Lakh</p>
+					<div class="listing-meta">
+						<ul>
+							<li>Diesel/Petrol</li>					
+							<li>15.04 to 17.9 kmpl</li>
+							<li>Automatic</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- /Featured-LIsting -->
+
+<section class="section-padding">
+	<div class="container">
+		<div class="buy-sell-car">
+			<div class="act-car-img"><img src="{% static 'assets/images/car-img-03.png' %}" alt="image"></div>
+			<div class="new-car act-car">
+				<h4>Are you looking to buy a </h4>
+				<h2>Used Car?</h2>
+				<p>Start searching our inventory that includes 2000+ cars</p>
+			</div>
+			<div class="old-car act-car">
+				<h4>Are you looking to sell </h4>
+				<h2>Old car?</h2>
+				<p>Add your vehicle to inventory & reach 3k potential buyers</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Quick-Join -->
+<section class="brand-section gray-bg">
+  <div class="container">
+    <div class="brand-hadding">
+      <h5>Popular Brands</h5>
+    </div>
+    <div class="brand-logo-list">
+      <div id="popular_brands">
+        <div><a href="#"><img src="{% static 'assets/images/brand-logo-1.png' %}" class="img-fluid" alt="image"></a></div>
+        <div><a href="#"><img src="{% static 'assets/images/brand-logo-2.png' %}" class="img-fluid" alt="image"></a></div>
+        <div><a href="#"><img src="{% static 'assets/images/brand-logo-3.png' %}" class="img-fluid" alt="image"></a></div>
+        <div><a href="#"><img src="{% static 'assets/images/brand-logo-4.png' %}" class="img-fluid" alt="image"></a></div>
+        <div><a href="#"><img src="{% static 'assets/images/brand-logo-5.png' %}" class="img-fluid" alt="image"></a></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Quick-Join -->
+
+<!-- Footer -->
+<footer>
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-6">
+          <h6>Top Categores</h6>
+          <ul>
+            <li><a href="#">Car Brand Name</a></li>
+            <li><a href="#">Car Brand Name 2</a></li>
+            <li><a href="#">Car Brand Name 3</a></li>
+            <li><a href="#">Car Brand Name 4</a></li>
+            <li><a href="#">Car Brand Name 5</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <h6>About Us</h6>
+          <ul>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Hybrid Cars</a></li>
+            <li><a href="#">Cookies</a></li>
+            <li><a href="#">Trademarks</a></li>
+            <li><a href="#">Terms of use</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <h6>Useful Links</h6>
+          <ul>
+            <li><a href="#">Our Partners</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Sitemap</a></li>
+            <li><a href="#">Investors</a></li>
+            <li><a href="#">Request a Quote</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <h6>Subscribe Newsletter</h6>
+          <div class="newsletter-form">
+            <form action="#">
+              <div class="form-group">
+                <input type="email" class="form-control newsletter-input" required placeholder="Enter Email Address" />
+              </div>
+              <button type="submit" class="btn btn-block">Subscribe <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></button>
+            </form>
+            <p class="subscribed-text">*We send great deals and latest auto news to our subscribed users every week.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-push-6 text-right">
+          <div class="footer_widget">
+            <p>Download Our APP:</p>
+            <ul>
+              <li><a href="#"><i class="fa fa-android" aria-hidden="true"></i></a></li>
+              <li><a href="#"><i class="fa fa-apple" aria-hidden="true"></i></a></li>
+            </ul>
+          </div>
+          <div class="footer_widget">
+            <p>Connect with Us:</p>
+            <ul>
+              <li><a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
+              <li><a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+              <li><a href="#"><i class="fa fa-google-plus-square" aria-hidden="true"></i></a></li>
+              <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-6 col-md-pull-6">
+          <p class="copy-right">Copyright &copy; 2020 CarForYou. All Rights Reserved</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- /Footer -->
+
+
+<!-- Scripts --> 
+<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap.min.js' %}"></script> 
+<script src="{% static 'assets/js/interface.js' %}"></script> 
+<!--Switcher-->
+<script src="{% static 'assets/switcher/js/switcher.js' %}"></script>
+<!--bootstrap-slider-JS--> 
+<script src="{% static 'assets/js/bootstrap-slider.min.js' %}"></script> 
+<!--Slider-JS--> 
+<script src="{% static 'assets/js/slick.min.js' %}"></script> 
+<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+</body>
+
+</html>

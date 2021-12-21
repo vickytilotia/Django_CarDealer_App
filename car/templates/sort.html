@@ -1,0 +1,374 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load humanize %} 
+{% block title %}Cars{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'assets/css/owl.transitions.css' %}" type="text/css">
+{% endblock %}
+
+{% block body %}
+
+
+<!--Page Header-->
+<section class="page-header listing_page">
+  <div class="container">
+    <div class="page-header_wrap">
+      <div class="page-heading">
+        <h1>Car Listing</h1>
+      </div>
+      <ul class="coustom-breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li>Car Listing</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Dark Overlay-->
+  <div class="dark-overlay"></div>
+</section>
+<!-- /Page Header--> 
+
+<!--Listing-->
+<section class="listing-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9 col-md-push-3">
+	  <div class="mobile_search">
+		 <div class="sidebar_widget">
+          <div class="widget_heading">
+            <h5><i class="fa fa-filter" aria-hidden="true"></i> Find Your Dream Car </h5>
+          </div>
+          <div class="sidebar_filter">
+            <form action="/search" method="get">
+              <div class="form-group select">
+                <select class="form-control" name="city">
+                  <option>Select Location</option>
+                  <option>Araria</option> 
+                  <option>Arwal</option>
+                  <option>Aurangabad</option>
+                  <option>Banka</option>
+                  <option>Begusarai</option>
+                  <option>Bhagalpur</option>
+                  <option>Bhojpur</option>
+                  <option>Buxar</option>
+                  <option>Darbhanga</option>
+                  <option>East Champaran</option>
+                  <option>Gaya</option>
+                  <option>Gopalganj</option>
+                  <option>Jamui</option>
+                  <option>Jehanabad</option>
+                  <option>Khagaria</option>
+                  <option>Kishanganj</option>
+                  <option>Kaimur</option>
+                  <option>Katihar</option>
+                  <option>Lakhisarai</option>
+                  <option>Madhubani</option>
+                  <option>Munger</option>
+                  <option>Madhepura</option>
+                  <option>Muzaffarpur</option>
+                  <option>Nalanda</option>
+                  <option>Nawada</option>
+                  <option>Patna</option>
+                  <option>Purnia</option>
+                  <option>Rohtas</option>
+                  <option>Saharsa</option>
+                  <option>Samastipur</option>
+                  <option>Sheohar</option>
+                  <option>Sheikhpura</option>
+                  <option>Saran</option>
+                  <option>Sitamarhi</option>
+                  <option>Supaul</option>
+                  <option>Siwan</option>
+                  <option>Vaishali</option>
+                  <option>West Champaran</option>
+                  <option>Garhwa</option>
+                  <option>Palamu</option>
+                  <option>Latehar</option>
+                  <option>Chatra</option>
+                  <option>Hazaribagh</option>
+                  <option>Koderma</option>
+                  <option>Giridih</option>
+                  <option>Ramgarh</option>
+                  <option>Bokaro</option>
+                  <option>Dhanbad</option>
+                  <option>Gumla</option>
+                  <option>Lohardaga</option>
+                  <option>Simdega</option>
+                  <option>Ranchi</option>
+                  <option>Khunti</option>
+                  <option>West Singhbhum</option>
+                  <option>Saraikela Kharsawan</option>
+                  <option>East Singhbhum</option>
+                  <option>Jamtara</option>
+                  <option>Deoghar</option>
+                  <option>Dumka</option>
+                  <option>Pakur</option>
+                  <option>Godda</option>
+                  <option>Sahebganj</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form-group select">
+                <select class="form-control" name="vehicle_type">
+                  <option>Select Vehicle Type</option>
+                  <option>Car</option>
+                  <option>Bike</option>
+                  <option>Truck</option>
+                  <option>Tractor</option>
+                  <option>Auto Rikshaw</option>
+                  <option>Agriculture Instrument</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                  <label class="form-label">Price Range (₹)</label>
+                  <input id="price_range1" name= "slider" data-slider-id='ex1Slider' type="text" class="span2" value="" data-slider-min="0" data-slider-max="2000000" data-slider-step="100000" data-slider-value="[100000,1200000]" tooltip="always"/>
+                  
+              </div>
+
+              <div class="form-group">
+                <button type="submit" class="btn btn-block"><i class="fa fa-search" aria-hidden="true"></i> Search Car</button>
+              </div>
+            </form>
+          </div>
+        </div>
+	   </div>
+        <div class="result-sorting-wrapper">
+          <div class="sorting-count">
+            <p>{{ total_vehicles}} <span>of {{ total_vehicles}} Vehicles</span></p>
+          </div>
+          
+          <div class="result-sorting-by">
+            
+              <p>Sort by:</p>
+            <form action="/sort.html" method="get">
+              <div class="form-group select sorting-select">
+                <select class="form-control" name="sort" onchange="this.form.submit()">
+                {%if low_to_high == True%}
+                <option>Price (low to high)</option>
+                <option>Price (high to low)</option>
+                {%else%}
+                <option>Price (high to low)</option>
+                <option>Price (low to high)</option>
+                {%endif%}
+                
+                </select>
+                
+              </div>
+            </form>
+            
+          </div>
+        </div>
+        
+
+        {% for car in sorted%}
+          
+        <div class="product-listing-m gray-bg">
+          <div class="product-listing-img"> <a href="/listing-detail.html/{{car.id}}"><img src="{{car.car_photo.url}}" class="img-fluid" alt="Image" /> </a>
+            
+            
+          </div>
+          <div class="product-listing-content">
+            <h5><a href="/listing-detail.html/{{car.id}}">{{car.car_title|title}}</a></h5>
+            <p class="list-price">₹ {{car.expected_selling_price | intcomma }}</p>
+            <ul>
+              <li><i class="fa fa-road" aria-hidden="true"></i>{{car.kilometer_driven  | intcomma }} km</li>
+              <li><i class="fa fa-paint-brush" aria-hidden="true"></i>{{car.car_color|title}}</li>
+              <li><i class="fa fa-location-arrow" aria-hidden="true"></i> {{car.car_city|title}}</li>
+              <li><i class="fa fa-calendar" aria-hidden="true"></i>{{car.make_year}} model</li>
+              <li><i class="fa fa-shower" aria-hidden="true"></i>{{car.fuel_type|title}}</li>
+              <li><i class="fa fa-car" aria-hidden="true"></i>{{car.car_manufacturer|title}} {{car.car_model|title}}</li>
+            </ul>
+            <a href="/listing-detail.html/{{car.id}}/" class="btn">Get Seller Details <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
+            
+          </div>
+        </div>
+        
+        {% endfor %}
+
+
+        <!--
+        <div class="pagination">
+          <ul>
+          {% for num in allcars.paginator.page_range %}
+          {% ifequal num allcars.number %}
+          
+          <li class="current">{{ num }}</li>
+          {% else %}
+          <li><a href="?page={{ num }}">{{ num }}</a></li>
+          {% endifequal %} 
+          {% endfor %}
+
+          </ul>
+          
+        </div>
+        -->
+      </div>
+      
+      <!--Side-Bar-->
+      <aside class="col-md-3 col-md-pull-9">
+        <div class="sidebar_widget sidebar_search_wrap">
+          <div class="widget_heading">
+            <h5><i class="fa fa-filter" aria-hidden="true"></i> Find Your Dream Car </h5>
+          </div>
+          <div class="sidebar_filter">
+            <form action="/search" method="get">
+              <div class="form-group select">
+                <select class="form-control" name="city">
+                  <option>Select Location</option>
+                  <option>Araria</option> 
+                  <option>Arwal</option>
+                  <option>Aurangabad</option>
+                  <option>Banka</option>
+                  <option>Begusarai</option>
+                  <option>Bhagalpur</option>
+                  <option>Bhojpur</option>
+                  <option>Buxar</option>
+                  <option>Darbhanga</option>
+                  <option>East Champaran</option>
+                  <option>Gaya</option>
+                  <option>Gopalganj</option>
+                  <option>Jamui</option>
+                  <option>Jehanabad</option>
+                  <option>Khagaria</option>
+                  <option>Kishanganj</option>
+                  <option>Kaimur</option>
+                  <option>Katihar</option>
+                  <option>Lakhisarai</option>
+                  <option>Madhubani</option>
+                  <option>Munger</option>
+                  <option>Madhepura</option>
+                  <option>Muzaffarpur</option>
+                  <option>Nalanda</option>
+                  <option>Nawada</option>
+                  <option>Patna</option>
+                  <option>Purnia</option>
+                  <option>Rohtas</option>
+                  <option>Saharsa</option>
+                  <option>Samastipur</option>
+                  <option>Sheohar</option>
+                  <option>Sheikhpura</option>
+                  <option>Saran</option>
+                  <option>Sitamarhi</option>
+                  <option>Supaul</option>
+                  <option>Siwan</option>
+                  <option>Vaishali</option>
+                  <option>West Champaran</option>
+                  <option>Garhwa</option>
+                  <option>Palamu</option>
+                  <option>Latehar</option>
+                  <option>Chatra</option>
+                  <option>Hazaribagh</option>
+                  <option>Koderma</option>
+                  <option>Giridih</option>
+                  <option>Ramgarh</option>
+                  <option>Bokaro</option>
+                  <option>Dhanbad</option>
+                  <option>Gumla</option>
+                  <option>Lohardaga</option>
+                  <option>Simdega</option>
+                  <option>Ranchi</option>
+                  <option>Khunti</option>
+                  <option>West Singhbhum</option>
+                  <option>Saraikela Kharsawan</option>
+                  <option>East Singhbhum</option>
+                  <option>Jamtara</option>
+                  <option>Deoghar</option>
+                  <option>Dumka</option>
+                  <option>Pakur</option>
+                  <option>Godda</option>
+                  <option>Sahebganj</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form-group select">
+                <select class="form-control" name="vehicle_type">
+                  <option>Select Vehicle Type</option>
+                  <option>Car</option>
+                  <option>Bike</option>
+                  <option>Truck</option>
+                  <option>Tractor</option>
+                  <option>Auto Rikshaw</option>
+                  <option>Agriculture Instrument</option>
+                </select>
+              </div>
+
+
+              
+              <div class="form-group">
+                  <label class="form-label">Price Range (₹)</label>
+                  <input id="price_range" name= "slider" data-slider-id='ex1Slider' type="text" class="span2" value="" data-slider-min="0" data-slider-max="2000000" data-slider-step="100000" data-slider-value="[100000,1200000]" tooltip="always"/>
+                  <p>Range: <span id="message"></span></p>
+                  
+              </div>
+
+              <div class="form-group">
+                <button type="submit" class="btn btn-block"><i class="fa fa-search" aria-hidden="true"></i> Search Car</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+
+        <div class="sidebar_widget">
+          <div class="adimage">
+           <a href="{{ad.ad1_url}}">
+          <img id="avatar" src="{{ad.ad1.url}}" alt="Image not found" >
+          </a>
+          </div>
+         
+        </div>
+        <div class="sidebar_widget">
+          <div class="widget_heading">
+            <h5><i class="fa fa-car" aria-hidden="true"></i> Recently Listed Cars</h5>
+          </div>
+          <div class="recent_addedcars">
+            <ul>
+            {% for car in allcars reversed%}
+            {% if forloop.counter < 6 %}
+              <li class="gray-bg">
+                <div class="recent_post_img"> <a href="/listing-detail.html/{{car.id}}"><img src="{{car.car_photo.url}}" alt="image"></a> </div>
+                <div class="recent_post_title"> <a href="/listing-detail.html/{{car.id}}">{{car.car_title|title}}</a>
+                  <p class="widget_price">₹ {{car.expected_selling_price | intcomma }}</p>
+                </div>
+                
+              </li>
+              
+              {% endif %} 
+              {% endfor %}
+
+            </ul>
+          </div>
+        </div>
+      </aside>
+      <!--/Side-Bar--> 
+    </div>
+  </div>
+</section>
+<!-- /Listing--> 
+
+
+{% block scripts %}
+
+<script type="text/javascript">
+function submitform()
+{
+  document.sort.submit();
+}
+</script>
+
+<script>
+$( document ).ready(function() {
+    $('#price_range').change(function(){
+        $('#message').html('₹ '+$('#price_range').val());
+    });
+});
+</script>
+
+
+
+{% endblock %}
+
+
+{% endblock %}

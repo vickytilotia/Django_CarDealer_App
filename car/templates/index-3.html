@@ -1,0 +1,294 @@
+{% extends 'base.html' %}
+{% load humanize %} 
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+
+{% block body %}
+
+<!-- Intro -->
+<section id="intro-3">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5">
+				
+					<div class="sidebar_widget sidebar_3">
+
+    
+						<div class="widget_heading">
+
+						  <h5><i class="fa fa-filter" aria-hidden="true"></i>Find Your Dream Car</h5>
+
+						</div>
+
+    
+					<div class="sidebar_filter">
+
+					<form action="/search" method="get">
+					<div class="row">
+        <div class="form-group col-md-6">
+          <div class="select">
+            <select class="form-control" name="city">
+                  <option>Select Location</option>
+                  <option>Araria</option> 
+                  <option>Arwal</option>
+                  <option>Aurangabad</option>
+                  <option>Banka</option>
+                  <option>Begusarai</option>
+                  <option>Bhagalpur</option>
+                  <option>Bhojpur</option>
+                  <option>Buxar</option>
+                  <option>Darbhanga</option>
+                  <option>East Champaran</option>
+                  <option>Gaya</option>
+                  <option>Gopalganj</option>
+                  <option>Jamui</option>
+                  <option>Jehanabad</option>
+                  <option>Khagaria</option>
+                  <option>Kishanganj</option>
+                  <option>Kaimur</option>
+                  <option>Katihar</option>
+                  <option>Lakhisarai</option>
+                  <option>Madhubani</option>
+                  <option>Munger</option>
+                  <option>Madhepura</option>
+                  <option>Muzaffarpur</option>
+                  <option>Nalanda</option>
+                  <option>Nawada</option>
+                  <option>Patna</option>
+                  <option>Purnia</option>
+                  <option>Rohtas</option>
+                  <option>Saharsa</option>
+                  <option>Samastipur</option>
+                  <option>Sheohar</option>
+                  <option>Sheikhpura</option>
+                  <option>Saran</option>
+                  <option>Sitamarhi</option>
+                  <option>Supaul</option>
+                  <option>Siwan</option>
+                  <option>Vaishali</option>
+                  <option>West Champaran</option>
+                  <option>Garhwa</option>
+                  <option>Palamu</option>
+                  <option>Latehar</option>
+                  <option>Chatra</option>
+                  <option>Hazaribagh</option>
+                  <option>Koderma</option>
+                  <option>Giridih</option>
+                  <option>Ramgarh</option>
+                  <option>Bokaro</option>
+                  <option>Dhanbad</option>
+                  <option>Gumla</option>
+                  <option>Lohardaga</option>
+                  <option>Simdega</option>
+                  <option>Ranchi</option>
+                  <option>Khunti</option>
+                  <option>West Singhbhum</option>
+                  <option>Saraikela Kharsawan</option>
+                  <option>East Singhbhum</option>
+                  <option>Jamtara</option>
+                  <option>Deoghar</option>
+                  <option>Dumka</option>
+                  <option>Pakur</option>
+                  <option>Godda</option>
+                  <option>Sahebganj</option>
+                  <option>Other</option>
+                </select>
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <div class="select">
+            <select class="form-control" name="vehicle_type">
+                  <option>Select Vehicle Type</option>
+                  <option>Car</option>
+                  <option>Bike</option>
+                  <option>Truck</option>
+                  <option>Tractor</option>
+                  <option>Auto Rikshaw</option>
+                  <option>Agriculture Instrument</option>
+                </select>
+          </div>
+        </div>
+
+
+        <div class="form-group col-md-12">
+          <label class="form-label">Price Range (₹)</label>
+                  <input id="price_range" name= "slider" data-slider-id='ex1Slider' type="text" class="span2" value="" data-slider-min="0" data-slider-max="2000000" data-slider-step="100000" data-slider-value="[100000,1200000]" tooltip="always"/>
+                  <p>Range: <span id="message"></span></p>
+        </div>
+        
+        <div class="form-group col-md-12">
+          <button type="submit" class="btn btn-block"><i class="fa fa-search" aria-hidden="true"></i> Search Car </button>
+        </div>
+		</div>
+      </form>
+
+
+					</div>
+
+				  </div>
+				
+				
+			</div>
+			<div class="col-md-7">
+				<div class="intro-img-wp">
+					<img src="{% static 'assets/images/car-img-01.png' %}" alt="image">
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- /Intro -->
+
+<!-- How-it-work -->
+<section id="how-work" class="section-padding">
+	<div class="container">
+		<div class="section-header heading-3 text-center">
+			<h2>How it Work</h2>
+			<p>Helps you to find perfect car.</p>
+		</div>
+		<div class="row">
+			<div class="col-md-3 col-sm-6">
+				<div class="work-steps">
+					<div class="icon-wrap">
+						<img src="{% static 'assets/images/icon-80x80.png' %}" alt="icon">
+					</div>
+					<h5>Search Our Inventory</h5>
+					<p>You can search your desired vehicle in our database using the search functionality.</p>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-6">
+				<div class="work-steps">
+					<div class="icon-wrap">
+						<img src="{% static 'assets/images/icon-80x80-2.png' %}" alt="icon">
+					</div>
+					<h5>Choose The Car You Like</h5>
+					<p>Choose the Car with your preferences like color, make-year, and kilometer-driven. </p>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-6">
+				<div class="work-steps">
+					<div class="icon-wrap">
+						<img src="{% static 'assets/images/icon-80x80-3.png' %}" alt="icon">
+					</div>
+					<h5>Better Investment</h5>
+					<p>A used car is a sometimes better investment than a new car. It saves you from extra liabilities.</p>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-6">
+				<div class="work-steps">
+					<div class="icon-wrap">
+						<img src="{% static 'assets/images/icon-80x80-4.png' %}" alt="icon">
+					</div>
+					<h5>Get A Test Drive</h5>
+					<p> Do not forget to test drive a vehicle before finalizing the deal. It helps you to provide real feedback from the vehicle.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- /How-it-work -->
+
+<!-- Why-Choose-Us -->
+<section id="why-choose">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="image-rightside">
+					<img src="{% static 'assets/images/car-img-02.png' %}" alt="image">
+				</div>
+			</div>
+			<div class="col-md-6">
+				<h2>Why choose Biharimotors.com?</h2>
+				<p>How to get vehicle and owner details?</p>
+				
+				<ul>
+					<li><i class="fa fa-check-circle"></i> Search desired Vehicle</li>
+					<li><i class="fa fa-check-circle"></i> Select your Vehicle</li>
+					<li><i class="fa fa-check-circle"></i> Get complete detail</li>
+					<li><i class="fa fa-check-circle"></i> Verify Your phone number</li>
+					<li><i class="fa fa-check-circle"></i> Get Contact Detail of Car Owner</li>
+				</ul>
+				<a href="/listing-classic.html" class="btn">Go to Used Cars</a>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- /Why-Choose-Us -->
+
+<!-- Featured-LIsting -->
+<section id="featured-listings" class="section-padding">
+	<div class="container">
+		<div class="section-header heading-3 text-center">
+			<h2>Our Vehicles Listing</h2>
+			<p>List of some used vehicle</p>
+		</div>	
+		<div class="row">
+		    {% for car in allcars%}
+        	{% if forloop.counter < 7 %}
+			<div class="col-md-4 col-sm-6">
+				<div class="featured-listing-wrap">
+					<div class="listing-image">
+						<a href="/listing-detail.html/{{car.id}}/"><img src="{{car.car_photo.url}}" alt="image"></a>
+						
+						
+					</div>
+					<h4><a href="/listing-detail.html/{{car.id}}/">{{car.car_title|title}}</a></h4>
+					<p class="listing-price">{{car.car_title|title}}</p>
+					<div class="listing-meta">
+						<ul>
+							<li>{{car.fuel_type|title}}</li>					
+							<li>{{car.transmission_type|title}}</li>
+							<li>{{car.car_city |title}}</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			{% endif %}
+        	{% endfor %}
+			
+		</div>
+	</div>
+</section>
+<!-- /Featured-LIsting -->
+
+<section class="section-padding">
+	<div class="container">
+		<div class="buy-sell-car">
+			<div class="act-car-img"><img src="{% static 'assets/images/car-img-03.png' %}" alt="image"></a></div>
+			<div class="new-car act-car">
+				<h4>Are you looking to buy a </h4>
+				<h2><a href="/listing-classic.html" style="color: white">Used Car?</a></h2>
+				<p>Start searching our inventory that includes 2000+ cars</p>
+			</div>
+			<div class="old-car act-car">
+				<h4>Are you looking to sell </h4>
+				<h2><a href="/listing-classic.html" style="color: white">Old car?</a></h2>
+				<p>Add your vehicle to inventory & reach 3k potential buyers</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+{% block scripts %}
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script>
+$( document ).ready(function() {
+    $('#price_range').change(function(){
+        $('#message').html('₹ '+$('#price_range').val());
+    });
+});
+</script>
+
+
+
+{% endblock %}
+
+{% endblock %}
+

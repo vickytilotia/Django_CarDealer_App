@@ -1,0 +1,223 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Profile Setting{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'assets/css/owl.transitions.css' %}" type="text/css">
+{% endblock %}
+
+{% block body %}
+
+<!--Page Header-->
+<section class="page-header aboutus_page">
+  <div class="container">
+    <div class="page-header_wrap">
+      <div class="page-heading">
+        <h1>About Us</h1>
+      </div>
+      <ul class="coustom-breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li>About Us</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Dark Overlay-->
+  <div class="dark-overlay"></div>
+</section>
+<!-- /Page Header--> 
+
+<!--About-us-->
+<section class="about_us section-padding">
+  <div class="container">
+    <div class="section-header text-center">
+      <h2>Welcome <span>to the Biharimotors.com</span></h2>
+      <p> We provide a platform for publishing used vehicles. Search among the database of around 3k vehicles and get your desired vehicle.</p>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-6">
+        <div class="about_content row">
+          <div class="col-md-5 col-sm-4 col-xs-4">
+            <div class="about_img"> <img src="{% static 'assets/images/about_us_img1.jpg' %}" alt="image"> </div>
+          </div>
+          <div class="col-md-7 col-sm-8 col-xs-8">
+            <h3>Who <span>Are We</span></h3>
+            <p>A platform that connects the buyer to the seller. A platform that helps people to get used vehicles hassle-free.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-6">
+        <div class="about_content row">
+          <div class="col-md-5 col-sm-4 col-xs-4">
+            <div class="about_img"> <img src="{% static 'assets/images/about_us_img2.jpg' %}" alt="image"> </div>
+          </div>
+          <div class="col-md-7 col-sm-8 col-xs-8">
+            <h3>Our <span>Mission</span></h3>
+            <p>Our mission is to provide Used vehicles nearby in one place. So that the potential buyer does not need to hassle between dealers.</p>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+
+    </div>
+  </div>
+</section>
+<!-- /About-us--> 
+
+<!-- Why-Choose-Us
+<section class="why_choose_us section-padding gray-bg">
+  <div class="container">
+    <div class="section-header text-center">
+      <h2>Why <span>Choose Us</span></h2>
+      <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. </p>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-6">
+        <div class="listing_box">
+          <h5><i class="fa fa-user-circle" aria-hidden="true"></i> Trusted By Thousands</h5>
+          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+        </div>
+        <div class="listing_box">
+          <h5><i class="fa fa-globe" aria-hidden="true"></i> Wide Range Of Vehicles</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+        </div>
+        <div class="listing_box">
+          <h5><i class="fa fa-car" aria-hidden="true"></i> Faster Buy & Sell</h5>
+          <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-6">
+        <div class="video_box">
+          <iframe class="mfp-iframe" src="https://www.youtube.com/embed/rqSoXtKMU3Q" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ /Why-Choose-Us--> 
+
+<!-- Fun-Facts-->
+<section class="fun-facts-section">
+  <div class="container div_zindex">
+    <div class="row">
+      <div class="col-md-3 col-sm-3 col-xs-6">
+        <div class="fun-facts-m">
+          <div class="cell">
+            <h2><i class="fa fa-calendar" aria-hidden="true"></i>14+</h2>
+            <p>Years In Business</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-6">
+        <div class="fun-facts-m">
+          <div class="cell">
+            <h2><i class="fa fa-car" aria-hidden="true"></i>1000+</h2>
+            <p>Cars Deal Completed</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-6">
+        <div class="fun-facts-m">
+          <div class="cell">
+            <h2><i class="fa fa-car" aria-hidden="true"></i>1000+</h2>
+            <p>Used Cars For Sale</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-6">
+        <div class="fun-facts-m">
+          <div class="cell">
+            <h2><i class="fa fa-user-circle-o" aria-hidden="true"></i>600+</h2>
+            <p>Satisfied Customers</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Dark Overlay-->
+  <div class="dark-overlay"></div>
+</section>
+<!-- /Fun-Facts--> 
+
+<!-- Meet-the-Team-->
+<section class="meet_team section-padding">
+  <div class="container">
+    <div class="section-header text-center">
+      <h2>Meet <span>the Team</span></h2>
+      
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-sm-4">
+        <div class="team_member">
+          <div class="team_img"> <img src="{% static 'assets/images/our_team_1.jpg' %}" alt="image">
+            <div class="team_more_info">
+              <div class="info_wrap">
+                <p><span>Phone:</span> <a href="tel:+61-12134-567-89">+61-12134-567-89</a></p>
+                <p><span>Email:</span> <a href="mailto:contact@example.com">contact@example.com</a></p>
+                <ul>
+                  <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                  <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                  <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                  <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="team_info">
+            <H6>Your Name</H6>
+            <P>Chief Finance Manager</P>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-4">
+        <div class="team_member">
+          <div class="team_img"> <img src="{% static 'assets/images/our_team_2.jpg' %}" alt="image">
+            <div class="team_more_info">
+              <div class="info_wrap">
+                <p><span>Phone:</span> <a href="tel:+61-12134-567-89">+61-12134-567-89</a></p>
+                <p><span>Email:</span> <a href="mailto:contact@example.com">contact@example.com</a></p>
+                <ul>
+                  <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                  <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                  <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                  <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="team_info">
+            <H6>Your name</H6>
+            <P>Sales Manager</P>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-4">
+        <div class="team_member">
+          <div class="team_img"> <img src="{% static 'assets/images/our_team_3.jpg' %}" alt="image">
+            <div class="team_more_info">
+              <div class="info_wrap">
+                <p><span>Phone:</span> <a href="tel:+61-12134-567-89">+61-12134-567-89</a></p>
+                <p><span>Email:</span> <a href="mailto:contact@example.com">contact@example.com</a></p>
+                <ul>
+                  <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                  <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                  <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                  <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="team_info">
+            <H6>Your name</H6>
+            <P>Executive Vice President</P>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Meet-the-Team--> 
+
+
+{% endblock %}

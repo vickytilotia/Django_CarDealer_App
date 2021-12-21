@@ -1,0 +1,334 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Sell My Car{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'assets/css/owl.transitions.css' %}" type="text/css">
+<style>
+.form-group.required .control-label:after { 
+    color: #d00;
+    content: "*";
+    position: absolute;
+    margin-left: 8px;
+    top:7px;
+}
+</style>
+
+{% endblock %}
+
+{% block body %}
+
+
+
+<!--Page Header-->
+<section class="page-header profile_page">
+  <div class="container">
+    <div class="page-header_wrap">
+      <div class="page-heading">
+        <h1>Post a Vehicle</h1>
+      </div>
+      <ul class="coustom-breadcrumb">
+        <li><a href="index.html">Home</a></li>
+        <li>Post a Vehicle</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Dark Overlay-->
+  <div class="dark-overlay"></div>
+</section>
+<!-- /Page Header--> 
+
+<!--Post-vehicle-->
+<section class="user_profile inner_pages">
+  <div class="container">
+  <!--
+    <div class="user_profile_info gray-bg padding_4x4_40">
+      <div class="upload_user_logo"> <img src="{% static 'assets/images/dealer-logo.jpg' %}" alt="image">
+        
+        <div class="upload_newlogo">
+          <input name="upload" type="file">
+        </div>
+        
+      </div>
+      <div class="dealer_info">
+        <h5>Post a Used Car </h5>
+        
+      </div>
+    </div>
+    -->
+    <div class="row">
+      <div class="col-md-3 col-sm-3">
+        <div class="profile_nav">
+          <ul>
+            <li><a href="profile-settings.html">Change Password</a></li>
+            <li><a href="my-vehicles.html">My Vehicles</a></li>
+            <li class="active"><a href="post-vehicle.html">Post a Vehicles</a></li>
+            <li><a href="/logout">Sign Out</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-8">
+        <div class="profile_wrap">
+          <h5 class="uppercase underline">Post a New Vehicle</h5>
+          <form action="/post-vehicle.html" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+            <div class="form-group required">
+              <label class="control-label">Vehicles Title</label>
+              <input class="form-control white_bg" id="car_title" name="car_title" type="text" placeholder="ex. Suzuki Swift 2006 VXI Model" required>
+            </div>
+            <div class="form-group required">
+              <label class="control-label">Make Year</label>
+              <input class="form-control white_bg" id="make_year"  name="make_year" type="text" required onkeypress="return isNumber(event)" onpaste="return false;">
+            </div>
+            <div class="form-group">
+              <label class="control-label">Make Month</label>
+              <input class="form-control white_bg" id="make_month" name="make_month" type="text">
+            </div>
+            <div class="form-group required">
+              <label class="control-label">Vehicle Manufacturer</label>
+              <input class="form-control white_bg" id="car_manufacturer"  name="car_manufacturer" type="text" required placeholder="ex. suzuki, tata, mahindra">
+            </div>
+            <div class="form-group required">
+              <label class="control-label">Vehicle Model</label>
+              <input class="form-control white_bg" id="car_model" name="car_model" type="text" required>
+            </div>
+            <div class="form-group">
+              <label class="control-label">Vehicle Version</label>
+              <input class="form-control white_bg" id="car_version" name="car_version" type="text">
+            </div>
+            <div class="form-group">
+              <label class="control-label">Vehicle Colour</label>
+              <input class="form-control white_bg" id="car_color" name="car_color" type="text" >
+            </div>
+            <div class="form-group">
+              <label class="control-label">Select Fuel Type</label>
+              <div class="select">
+                <select class="form-control white_bg" name="fuel_type">
+                  <option>Petrol</option>
+                  <option>Diesel</option>
+                  <option>LPG</option>
+                  <option>CNG</option>
+                  <option>Electric</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">Select Transmission Type</label>
+              <div class="select">
+                <select class="form-control white_bg" name="transmission_type">
+                  <option>Manual</option>
+                  <option>Automatic</option>
+
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">Select Vehicle Owner</label>
+              <div class="select">
+                <select class="form-control white_bg" name="car_owner">
+                  <option>First Owner</option>
+                  <option>Second Owner</option>
+                  <option>Third Owner</option>
+                  <option>Fourth Owner or More</option>
+                  
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">Kilometer Driven</label>
+              <input class="form-control white_bg" id="kilometer_driven" name="kilometer_driven" type="text" >
+            </div>
+            <div class="form-group required">
+              <label class="control-label">Expected Selling Price(₹)</label>
+              <input class="form-control white_bg" id="expected_selling_price" name="expected_selling_price" type="text" required="required" onkeypress="return isNumber(event)" onpaste="return false;">
+            </div>
+            <div class="form-group">
+              <label class="control-label">Registration Type</label>
+              <div class="select">
+                <select class="form-control white_bg" name="registration_type">
+                  <option>Individual</option>
+                  <option>Corporate</option>
+                  <option>Taxi</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">Insurance Type</label>
+              <div class="select">
+                <select class="form-control white_bg" name="insurance_type">
+                  <option>Expired</option>
+                  <option>Comprehensive</option>
+                  <option>Third Party</option>
+                  
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">Registration Number</label>
+              <input class="form-control white_bg" id="registration_number" name="registration_number" type="text" placeholder="RJ20 CD XXXX" >
+            </div>
+            <div class="form-group">
+              <label class="control-label">Vehicle Overview  Description</label>
+              <textarea class="form-control white_bg" name="car_description" rows="4" ></textarea>
+            </div>
+
+            <div class="form-group required">
+              <label for="file-upload" class="control-label">Upload Images  ( size = 900 x 560 )</label>
+              <br>
+              <label for="file-upload" class="custom-file-upload"></label>
+              <div class="vehicle_images">
+                <div class="upload_more_img">
+                  <input id="file-upload" type="file" name="car_photo" accept="image/gif, image/jpeg, image/png" multiple class="form-control-file" required="required">
+                </div>
+              </div>
+            </div>
+            <div class="form-group required">
+              <label class="control-label">Vehicle Type</label>
+              <div class="select" >
+                <select class="form-control white_bg" name="vehicle_type">
+                  
+                  <option>Car</option>
+                  <option>Bike</option>
+                  <option>Truck</option>
+                  <option>Tractor</option>
+                  <option>Auto Rikshaw</option>
+                  <option>Agriculture Instrument</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Save Personal Details-->
+            <div class="gray-bg field-title">
+              <h6> Personal Details</h6>
+            </div>
+            <label class="control-label"> *Some of your contact details provided to interested buyers so that they can connect with you.</label>
+            <div class="form-group required">
+              <label class="control-label">Full Name</label>
+              <input class="form-control white_bg" id="facebook" name="car_owner_name" type="text" required>
+            </div>
+            <div class="form-group required">
+              <label class="control-label">City Name</label>
+              
+              <div class="select" >
+                <select class="form-control white_bg" name="car_city">
+                  
+                  <option>Araria</option> 
+                  <option>Arwal</option>
+                  <option>Aurangabad</option>
+                  <option>Banka</option>
+                  <option>Begusarai</option>
+                  <option>Bhagalpur</option>
+                  <option>Bhojpur</option>
+                  <option>Buxar</option>
+                  <option>Darbhanga</option>
+                  <option>East Champaran</option>
+                  <option>Gaya</option>
+                  <option>Gopalganj</option>
+                  <option>Jamui</option>
+                  <option>Jehanabad</option>
+                  <option>Khagaria</option>
+                  <option>Kishanganj</option>
+                  <option>Kaimur</option>
+                  <option>Katihar</option>
+                  <option>Lakhisarai</option>
+                  <option>Madhubani</option>
+                  <option>Munger</option>
+                  <option>Madhepura</option>
+                  <option>Muzaffarpur</option>
+                  <option>Nalanda</option>
+                  <option>Nawada</option>
+                  <option>Patna</option>
+                  <option>Purnia</option>
+                  <option>Rohtas</option>
+                  <option>Saharsa</option>
+                  <option>Samastipur</option>
+                  <option>Sheohar</option>
+                  <option>Sheikhpura</option>
+                  <option>Saran</option>
+                  <option>Sitamarhi</option>
+                  <option>Supaul</option>
+                  <option>Siwan</option>
+                  <option>Vaishali</option>
+                  <option>West Champaran</option>
+                  <option>Garhwa</option>
+                  <option>Palamu</option>
+                  <option>Latehar</option>
+                  <option>Chatra</option>
+                  <option>Hazaribagh</option>
+                  <option>Koderma</option>
+                  <option>Giridih</option>
+                  <option>Ramgarh</option>
+                  <option>Bokaro</option>
+                  <option>Dhanbad</option>
+                  <option>Gumla</option>
+                  <option>Lohardaga</option>
+                  <option>Simdega</option>
+                  <option>Ranchi</option>
+                  <option>Khunti</option>
+                  <option>West Singhbhum</option>
+                  <option>Saraikela Kharsawan</option>
+                  <option>East Singhbhum</option>
+                  <option>Jamtara</option>
+                  <option>Deoghar</option>
+                  <option>Dumka</option>
+                  <option>Pakur</option>
+                  <option>Godda</option>
+                  <option>Sahebganj</option>
+                  <option>Other</option>
+                  </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label">Phone Number</label>
+              <input class="form-control white_bg" id="linkedin" name="car_owner_phone_number" type="text" onkeypress="return isNumber(event)"> 
+            </div>
+            <div class="form-group">
+              <label class="control-label" style="color:red;">"*"</label>
+              <label class="control-label"> marked fields are neccessory.</label>
+              <br>
+              <div class="form-group">
+                  
+                  <label for="terms_agree">By submitting vehicle details, You also accepted the <a href="/privacy.html">Privacy and Policy Agreement</a></label>
+                </div>
+              
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn">Submit Vehicle <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--/Post-vehicle--> 
+
+{% block scripts %}
+{% comment %} <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> {% endcomment %}
+
+
+    <script type="text/javascript">     
+    function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if ( (charCode > 31 && charCode < 48) || charCode > 57) {
+            return false;
+        }
+        return true;
+      }
+    </script>
+
+
+    <script type="application/javascript">
+    $('input[type="file"]').change(function(e){
+        var fileName = e.target.files[0].name;
+        $('.custom-file-upload').html(fileName);
+    });
+</script>
+
+{% endblock %}
+
+
+{% endblock %}

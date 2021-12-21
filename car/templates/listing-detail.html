@@ -1,0 +1,477 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load humanize %}
+{% block title %}Sell My Car{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'assets/css/owl.transitions.css' %}" type="text/css">
+
+
+
+
+
+{% endblock %}
+
+{% block body %}
+
+<!-- Listing-detail-header -->
+<section class="listing_detail_header">
+  <div class="container">
+    <div class="listing_detail_head white-text div_zindex row">
+      <div class="col-md-9">
+        <h2>{{car.car_title| title}}</h2>
+        <div class="car-location"><span><i class="fa fa-map-marker" aria-hidden="true"></i> {{car.car_city}}</span></div>
+
+      </div>
+      <div class="col-md-3">
+        <div class="price_info">
+          <p>{{car.expected_selling_price| intcomma}} Rs</p>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dark-overlay"></div>
+</section>
+<!-- /Listing-detail-header -->
+
+
+<!-- Filter-Form -->
+<section id="filter_form" class="inner-filter gray-bg">
+  <div class="container">
+    <h3>Find Your Dream Car <span>(Easy search from here)</span></h3>
+    
+      <form action="#" method="get">
+	  <div class="row">
+        <div class="form-group col-md-3 col-sm-6 black_input">
+          <div class="select">
+            <select class="form-control">
+              <option value="">Select Location </option>
+              <option value="">Location 1 </option>
+              <option value="">Location 1 </option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group col-md-3 col-sm-6 black_input">
+          <div class="select">
+            <select class="form-control">
+              <option>Select Brand</option>
+              <option>Audi</option>
+              <option>BMW</option>
+              <option>Nissan</option>
+              <option>Toyota</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group col-md-3 col-sm-6 black_input">
+          <div class="select">
+            <select class="form-control">
+              <option>Select Model</option>
+              <option>Series 1</option>
+              <option>Series 2</option>
+              <option>Series 3</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group col-md-3 col-sm-6 black_input">
+          <div class="select">
+            <select class="form-control">
+              <option>Year of Model </option>
+              <option>2016</option>
+              <option>2015</option>
+              <option>2014</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group col-md-6 col-sm-6 black_input">
+          <label class="form-label">Price Range ($)</label>
+          <input id="price_range" type="text" class="span2" value="" data-slider-min="50" data-slider-max="6000" data-slider-step="5" data-slider-value="[1000,5000]"/>
+        </div>
+        <div class="form-group col-md-3 col-sm-6 black_input">
+          <div class="select">
+            <select class="form-control">
+              <option>Type of Car </option>
+              <option>New Car</option>
+              <option>Used Car</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group col-md-3 col-sm-6">
+          <button type="submit" class="btn btn-block"><i class="fa fa-search" aria-hidden="true"></i> Search Car </button>
+        </div>
+		 </div>
+      </form>
+   
+  </div>
+</section>
+<!-- /Filter-Form --> 
+
+<!--Listing-detail-->
+<section class="listing-detail">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="listing_images">
+          
+          <div class="listing_images_slider">
+            <div><img id ="avat"src="{{car.car_photo.url}}" alt="image" 
+          style="
+          border-bottom-width: 20px;
+          margin-bottom: 30px;
+            ">
+       </div>
+          </div>
+        </div>
+        <div class="main_features">
+          <ul>
+            <li> <i class="fa fa-tachometer" aria-hidden="true"></i>
+              <h5>{{car.kilometer_driven| intcomma}}</h5>
+              <p>Total Kilometres</p>
+            </li>
+            <li> <i class="fa fa-calendar" aria-hidden="true"></i>
+              <h5>{{car.make_year}}</h5>
+              <p>Reg.Year</p>
+            </li>
+            <li> <i class="fa fa-cogs" aria-hidden="true"></i>
+              <h5>{{car.fuel_type|title}}</h5>
+              <p>Fuel Type</p>
+            </li>
+            <li> <i class="fa fa-power-off" aria-hidden="true"></i>
+              <h5>{{car.transmission_type|title}}</h5>
+              <p>Transmission</p>
+            </li>
+            <li> <i class="fa fa-superpowers" aria-hidden="true"></i>
+              <h5>{{car.car_owner|title}}</h5>
+              <p>Owner Type</p>
+            </li>
+            <li> <i class="fa fa-paint-brush" aria-hidden="true"></i>
+              <h5>{{car.car_color|title}}</h5>
+              <p>Colour</p>
+            </li>
+          </ul>
+        </div>
+        <div class="listing_more_info">
+          <div class="listing_detail_wrap"> 
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs gray-bg" role="tablist">
+              <li role="presentation"><a class="active" href="#specification" aria-controls="specification" role="tab" data-toggle="tab">Technical Specification</a></li>
+              <li role="presentation"><a  href="#vehicle-overview " aria-controls="vehicle-overview" role="tab" data-toggle="tab">Vehicle Description </a></li>
+              
+              
+            </ul>
+            
+            <!-- Tab panes -->
+            <div class="tab-content"> 
+              <!-- vehicle-overview -->
+              <div role="tabpanel" class="tab-pane" id="vehicle-overview">
+                <p>{{car.car_description}}</p>
+              </div>
+              
+              <!-- Technical-Specification -->
+              <div role="tabpanel" class="tab-pane active" id="specification">
+                <div class="table-responsive"> 
+                  <!--Basic-Info-Table-->
+                  <table>
+                    <thead>
+                    <tr>
+                        <td>Model Year</td>
+                        <td>{{car.make_year}}</td>
+                      </tr>
+                      <tr>
+                        <td>Owner Type</td>
+                        <td>{{car.car_owner| title}}</td>
+                      </tr>
+                      <tr>
+                        <td>KMs Driven</td>
+                        <td>{{car.kilometer_driven | intcomma}}</td>
+                      </tr>
+                      <tr>
+                        <td>Make Month</td>
+                        <td>{{car.make_month| title}}</td>
+                      </tr>
+                      <tr>
+                        <td>Car Manufacturer</td>
+                        <td>{{car.car_manufacturer| title}}</td>
+                      </tr>
+                      <tr>
+                        <td>Car Model</td>
+                        <td>{{car.car_model| title}}</td>
+                      </tr>
+                      <tr>
+                        <td>Car Version</td>
+                        <td>{{car.car_version| title}}</td>
+                      </tr>
+                      <tr>
+                        <td>Car Colour</td>
+                        <td>{{car.car_color| title}}</td>
+                      </tr>
+                      <tr>
+                        <td>Transmission Type</td>
+                        <td>{{car.transmission_type| title}}</td>
+                      </tr>
+                      <tr>
+                        <td>Registration Type</td>
+                        <td>{{car.registration_type| title}}</td>
+                      </tr>
+                      <tr>
+                        <td>Registration Number</td>
+                        <td>{{car.registration_number| intcomma}}</td>
+                      </tr>
+                      <tr>
+                        <td>Insurance Type</td>
+                        <td>{{car.insurance_type| title}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  
+                  
+                </div>
+              </div>
+              
+              
+            </div>
+          </div>
+         
+          
+        </div>
+      </div>
+      
+      <!--Side-Bar-->
+      <aside class="col-md-3">
+        
+        <div class="sidebar_widget">
+          <div class="widget_heading">
+            <h5><i class="fa fa-address-card-o" aria-hidden="true"></i> Dealer Contact </h5>
+          </div>
+          {% if otp_verified == True %}
+
+            <div class="seller_detail">
+
+            <p><span>Name:</span> {{car.car_owner_name| title}}</p>
+            <p><span>City:</span> {{car.car_city| title}}</p>
+            <p><span>Phone:</span> {{car.car_owner_phone_number}}</p>
+            
+            </div>
+
+          {% else %}
+          <div class="login_btn"> <a href="" class="btn btn-xs uppercase" data-toggle="modal" data-target="#submit_number" data-dismiss="modal">See Details</a> 
+          {% endif %}
+          
+        </div>
+
+          <!--
+          
+          -->
+      </aside>
+      <!--/Side-Bar--> 
+      
+    </div>
+    <div class="space-20"></div>
+    <div class="divider"></div>
+    
+
+  </div>
+</section>
+<!--/Listing-detail--> 
+ 
+
+ <!--submit_number -->
+<div class="modal fade" id="submit_number">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title">Dealer Contact Details</h3>
+      </div>
+
+          {% if otp_verified == False %}
+          <div class="seller_detail">
+            <form action="/submit_number" method="post">
+              {% csrf_token %}
+                <!--# add a hidden input field-->
+                <input type="hidden" name="car_id" value="{{car.id}}"> 
+                <div class="form-group">
+                <p>Your Name </p><br>
+                  <input type="text" class="form-control" title="Your Name" id="phone_name" name="phone_name"  required>
+                <p>Submit Phone Number for OTP verification* </p><br>
+                  <input type="text" class="form-control" title="Please Submit 10 Digit Number Only" id="phone_number" name="phone_number" pattern="[1-9]{1}[0-9]{9}" placeholder="10 Digit Phone Number Only*"  required>
+                </div>
+
+                <div class="form-group">
+                  <input type="submit" value="Submit" class="btn btn-block">
+                </div>
+              </form>         
+          </div>
+          {% elif otp_verified == True %}
+            <p><span>Name:</span> {{car.car_owner_name| title}}</p>
+            <p><span>Yes I am here man:</span> {{car.car_owner_name| title}}</p>
+            <p><span>City:</span> {{car.car_city| title}}</p>
+            <p><span>Phone:</span> {{car.car_owner_phone_number}}</p>
+          {% endif %}
+      <!--
+      <div class="modal-body">
+        
+          <div class="login_wrap">
+		  	{% if error_message %}
+                <p><strong id="error">{{ error_message }}</strong></p>
+            {% endif %}
+            
+              <form action="/login" method="post">
+              {% csrf_token %}
+                
+                <div class="form-group">
+                  <input type="text" class="form-control" id="loginusername" name="loginusername" placeholder="Username or Email address*"  required>
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control" id="loginpass" name="loginpass" placeholder="Password*"  required>
+                </div>
+                <div class="form-group">
+                  <input type="submit" value="Login" class="btn btn-block">
+                </div>
+              </form>
+            
+
+          
+        </div>
+      </div>
+        -->
+      
+    </div>
+  </div>
+</div>
+<!--/submit_number--> 
+
+ <!--submit_otp -->
+<div class="modal fade" id="submit_otp">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title">Dealer Contact Details</h3>
+      </div>
+
+          {% if True %}
+          <div class="seller_detail">
+            <form action="/submit_otp" method="post">
+              {% csrf_token %}
+                
+                <div class="form-group">
+                  <input type="Number" class="form-control" id="get_otp" name="get_otp" placeholder="Submit OTP*"  required>
+                </div>
+
+                <div class="form-group">
+                  <input type="submit" value="Submit" class="btn btn-block">
+                </div>
+              </form>         
+          </div>
+          {% else %}
+            <p><span>Name:</span> {{car.car_owner_name| title}}</p>
+            <p><span>City:</span> {{car.car_city| title}}</p>
+            <p><span>Phone:</span> {{car.car_owner_phone_number}}</p>
+          {% endif %}
+      <!--
+      <div class="modal-body">
+        
+          <div class="login_wrap">
+		  	{% if error_message %}
+                <p><strong id="error">{{ error_message }}</strong></p>
+            {% endif %}
+            
+              <form action="/login" method="post">
+              {% csrf_token %}
+                
+                <div class="form-group">
+                  <input type="text" class="form-control" id="loginusername" name="loginusername" placeholder="Username or Email address*"  required>
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control" id="loginpass" name="loginpass" placeholder="Password*"  required>
+                </div>
+                <div class="form-group">
+                  <input type="submit" value="Login" class="btn btn-block">
+                </div>
+              </form>
+            
+
+          
+        </div>
+      </div>
+        -->
+      
+    </div>
+  </div>
+</div>
+<!--/submit_otp--> 
+
+
+<!--get_details is no more useful, now information 
+is directly avilable on the listing detail page through sessions-->
+
+ <!--get_details 
+<div class="modal fade" id="get_details">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title">Dealer Contact Details</h3>
+      </div>
+
+
+            <p><span>Name:</span> {{car.car_owner_name| title}}</p>
+            <p><span>City:</span> {{car.car_city| title}}</p>
+            <p><span>Phone:</span> {{car.car_owner_phone_number}}</p>
+          
+
+      <div class="modal-footer text-center">
+        <p>Don't have an account? <a href="" data-toggle="modal" data-target ="#signupModal" data-dismiss="modal">Signup Here</a></p></br>
+        <p><a href="#forgotpassword" data-toggle="modal" data-dismiss="modal">Forgot Password ?</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+/get_details--> 
+
+
+
+{% block scripts %}
+
+{% comment %} <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> {% endcomment %}
+
+
+<script>
+$(document).ready(function() {
+  if(window.location.href.indexOf('#submit_number') != -1) {
+    $('#submit_number').modal('show');
+  }
+
+});
+</script>
+
+
+<script>
+$(document).ready(function() {
+  if(window.location.href.indexOf('#submit_otp') != -1) {
+    $('#submit_otp').modal('show');
+  }
+
+});
+</script>
+
+{% comment %} <script>
+$(document).ready(function() {
+
+  if(window.location.href.indexOf('#get_details') != -1) {
+    $('#get_details').modal('show');
+  }
+
+});
+</script> {% endcomment %}
+
+
+
+
+{% endblock %}
+
+
+{% endblock %}
