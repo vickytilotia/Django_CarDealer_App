@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 
-with open(os.path.join(BASE_DIR, 'secret_key.txt')) as f:
-    SECRET_KEY = f.read().strip()
+SECRET_KEY = '&3ima5uzm&-j&bv+u1eg_qz4u3$^sz8x7hlqc5di0yj^_r-4ax'
+# with open(os.path.join(BASE_DIR, 'secret_key.txt')) as f:
+#     SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -40,7 +40,7 @@ if RENDER_EXTERNAL_HOSTNAME:
 # Application definition
 
 INSTALLED_APPS = [
-    'django_crontab', #for scheduled job specially for backup database
+    # 'django_crontab', #for scheduled job specially for backup database
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'car.apps.CarConfig',
     'django.contrib.humanize', # used in templates, html files-> adds coma to numbers
     'import_export', # import export csv file button in django admin section
-    'dbbackup',  # django-dbbackup
+    # 'dbbackup',  # django-dbbackup
 ]
 
 # django-dbbackup
@@ -60,9 +60,9 @@ DBBACKUP_STORAGE_OPTIONS = {'location': BASE_DIR/'backup'}
 
 # django crontab job scheduling
 # does NOT work on windows
-CRONJOBS = [
-    ('*/1 * * * *', 'cardealer.cron.my_scheduled_job')
-]   # some crontab terminal commands 
+# CRONJOBS = [
+#     ('*/1 * * * *', 'cardealer.cron.my_scheduled_job')
+# ]   # some crontab terminal commands 
 # https://pypi.org/project/django-crontab/
 # python manage.py crontab add
 # python manage.py crontab show
