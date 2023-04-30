@@ -28,7 +28,7 @@ SECRET_KEY = '&3ima5uzm&-j&bv+u1eg_qz4u3$^sz8x7hlqc5di0yj^_r-4ax'
 #     SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # ALLOWED_HOSTS = ['127.0.0.1']
 ALLOWED_HOSTS = ["*"]
