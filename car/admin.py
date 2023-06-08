@@ -3,7 +3,7 @@ from .models import Car, Privacy, Ads, Client
 from django.contrib.auth.models import Group
 
 # import-export plugin
-from import_export.admin import ImportExportModelAdmin
+# from import_export.admin import ImportExportModelAdmin
 
 
 # @admin.action(description='Download data as a csv file')  
@@ -63,10 +63,10 @@ def download_csv_car_details(self, request, queryset):
             s.car_owner_name,
             s.user])
 
-class CarAdmin(ImportExportModelAdmin):
-    list_display =('car_title','car_manufacturer','car_model','car_version','car_owner','car_post_date','car_status','user')
-    list_filter =('car_manufacturer','car_status')
-    actions = ['download_csv_car_details']
+# class CarAdmin(ImportExportModelAdmin):
+#     list_display =('car_title','car_manufacturer','car_model','car_version','car_owner','car_post_date','car_status','user')
+#     list_filter =('car_manufacturer','car_status')
+#     actions = ['download_csv_car_details']
 
 
 
@@ -74,10 +74,10 @@ class CarAdmin(ImportExportModelAdmin):
 #     list_display =('phone_number','name')
 #     actions = ['download_csv']
 
-class ClientAdmin(ImportExportModelAdmin):
-    # resource_class = BookResource
-    list_display =('phone_number','name')
-    actions = ['download_csv']
+# class ClientAdmin(ImportExportModelAdmin):
+#     # resource_class = BookResource
+#     list_display =('phone_number','name')
+#     actions = ['download_csv']
     
 # import-export plugin
 # class ClientResource(resources.ModelResource):
@@ -87,10 +87,12 @@ class ClientAdmin(ImportExportModelAdmin):
 
 
 # Register your models here.
-admin.site.register(Car,CarAdmin)
+# admin.site.register(Car,CarAdmin)
+admin.site.register(Car)
 admin.site.register(Privacy)
 admin.site.register(Ads)
-admin.site.register(Client,ClientAdmin)
+# admin.site.register(Client,ClientAdmin)
+admin.site.register(Client)
 
 #change the header of admin dashboard
 admin.site.site_header ='Admin Dashboard'

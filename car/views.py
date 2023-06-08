@@ -15,12 +15,9 @@ from django.http import JsonResponse
 from django.forms.models import model_to_dict
 from django.http import HttpResponseRedirect
 from django.core.management import call_command
-# for textlocal
-import urllib.request
-import urllib.parse
 
 # installed rate limit
-from ratelimit.decorators import ratelimit
+from django_ratelimit.decorators import ratelimit
 
 import random
 
@@ -458,32 +455,6 @@ def submit_otp(request):
     return HttpResponse("404- Not Found for submit otp")
 
 
-
-# generate random number for otp
-def generate_otp_message(request):
-    rand_message = random.randint(1000, 9999)
-    message = 'The OTP for BihariMotors is '+ str(rand_message)
-    apikey = ""
-    phone_number =request.session['session_phone_number']
-    print(phone_number)
-    sendSMS(apikey, str(phone_number) ,'BihariMotors',message)
-    return rand_message
-
-
-# text local send sms code
-
-# Here message is otp 
-def sendSMS(apikey, numbers, sender, message):
-    data =  urllib.parse.urlencode({'apikey': apikey, 'numbers': numbers,
-        'message' : message, 'sender': sender})
-    data = data.encode('utf-8')
-    request = urllib.request.Request("https://api.textlocal.in/send/?")
-    f = urllib.request.urlopen(request, data)
-    fr = f.read()
-    print("fr")
-    print(fr)
-    return(fr)
- 
 
 
 def disclaimer(request):
