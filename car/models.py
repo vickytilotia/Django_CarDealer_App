@@ -140,7 +140,7 @@ class Car(models.Model):
     vehicle_type = models.CharField(max_length=25, choices=vehicle_type_choices, default= 'Car')
 
 
-    # user
+    # user , Many to One connection
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     # settings.AUTH_USER_MODEL
     # personal details
@@ -161,7 +161,7 @@ class Car(models.Model):
         return self.car_title
 
 
-
+# To set privacy policies from the admin area.
 class Privacy(models.Model):
     privacy_policy = models.TextField()
 
@@ -172,6 +172,7 @@ class Privacy(models.Model):
     class Meta:
         verbose_name_plural = "Privacy"
 
+#To display some advertisement images
 class Ads(models.Model):
 
     popup_ad = models.ImageField(upload_to='car/car_images/', blank=True, null=True)
@@ -190,11 +191,12 @@ class Ads(models.Model):
     class Meta:
         verbose_name_plural = "Ads"
 
+#clients, are the users that try to access car information
+#They are not required to login and register with email and password
+#They are required to submit phone number for otp verification
 class Client(models.Model):
     name = models.CharField( max_length=100,default="-",blank=True, null = True)
     phone_number = models.IntegerField(default=0)
-
-
 
 
     def __str__(self):
