@@ -21,7 +21,7 @@ from django_ratelimit.decorators import ratelimit
 
 import random
 
-# Create your views here.
+# Home page
 def index(request):
     
     allcars = Car.objects.all().filter(vehicle_type = "Car")
@@ -29,7 +29,7 @@ def index(request):
     context = {'allcars':allcars, 'total_vehicles':total_vehicles}
     return render(request, 'index-3.html', context)
 
-# list all cars on used car page
+# list all cars on the used car page
 def listing_classic(request):
     
     allcars = Car.objects.all()
@@ -52,7 +52,6 @@ def listing_detail(request, myid):
     otp_verified = False
     if request.session.get('otp_verified') != None:
         otp_verified = True
-        print(otp_verified)
     else:
         otp_verified = False
     
@@ -69,7 +68,6 @@ def search(request):
         range_list = slider_range.split(",")
         min = range_list[0]
         max = range_list[1]
-        print(min,max)
         price_result = Car.objects.filter(expected_selling_price__range=(min, max))
         # price_result = Car.objects.raw('select expected_selling_price from car_car where expected_selling_price between "'+min+'" and "'+max+'" ')
         
@@ -87,32 +85,22 @@ def search(request):
         # intersecting two dictionaries
 
         final_dict = result & price_result
-        print(price_result)
-        print(result)
-        print("this is ")
-        print(final_dict)
-
         
-
-        # total_vehicles = len(final_dict)
-        total_vehicles = 6
+        total_vehicles = len(final_dict)
       
-
         context = {'result':final_dict, 'allcars':allcars, 'total_vehicles':total_vehicles}
 
 
         return render(request, 'search.html', context)
 
-
+# All cars sorting by price
 def sort(request):
     if request.method=='GET':
         sort = request.GET.get('sort')
-        print(sort)
         sorted = Car.objects.all()
         if sort == "Price (low to high)" :
             sorted = Car.objects.order_by("expected_selling_price")
-            # sorted = Car.objects.order_by("expected_selling_price")
-
+            
             # set a variable so that sort.html change its choice according to the previous choice 
             low_to_high = True
 
@@ -129,23 +117,19 @@ def sort(request):
         return render(request, 'sort.html', context)
 
 
+#Search page sorting by price
 def search_sort(request):
     if request.method=='GET':
         sort = request.GET.get('sort')
-        print(sort)
         
-
         # use session to get allcars from search page 
         all_search_page_cars = request.session.get('allcars')
-        print(all_search_page_cars)
-
+        
         if sort == "Price (low to high)" :
             sorted = Car.objects.order_by("expected_selling_price")
-            # sorted = Car.objects.order_by("expected_selling_price")
+            
         elif sort == "Price (high to low)" :
             sorted = Car.objects.order_by("-expected_selling_price")
-
-
 
         total_vehicles = sorted.count()
         allcars = Car.objects.all()
@@ -154,10 +138,10 @@ def search_sort(request):
         return render(request, 'sort.html', context)
 
 
+ # Add a Car
 @login_required(login_url='/#loginModal')
 def post_vehicle(request):
-    # return HttpResponse("this is homepage")
-
+    
     if request.method=='POST':
         car_title = request.POST['car_title']
         make_year = request.POST['make_year']
@@ -222,14 +206,15 @@ def post_vehicle(request):
 
     return render(request, 'post-vehicle.html', {})
 
+#Display users vehicles
 @login_required(login_url='/#loginModal')
 def my_vehicles(request):
     cars = Car.objects.filter(user = request.user)
     context = {'cars':cars}
     
-    
     return render(request, 'my-vehicles.html', context)
 
+#Delete user vehicle
 @login_required(login_url='/#loginModal')
 def delete_vehicles(request, myid):
     obj = get_object_or_404(Car, id=myid)
@@ -241,9 +226,9 @@ def delete_vehicles(request, myid):
         obj.delete()
         return redirect('/my-vehicles.html')
     
-    
     return render(request, 'my-vehicles.html', {})
 
+#User profile setting
 @login_required(login_url='/#loginModal')
 def profile_settings(request):
     if request.method == 'POST':
@@ -252,7 +237,6 @@ def profile_settings(request):
             user = form.save()
             update_session_auth_hash(request, user)
             messages.success(request, 'Your password was successfully updated!')
-            # return redirect('/')
             return redirect(request.META['HTTP_REFERER'])
         else:
             messages.error(request, 'Please retry for password change')
@@ -261,17 +245,16 @@ def profile_settings(request):
     return render(request, 'profile-settings.html', {
         'form': form
     })
-    # return render(request, 'profile-settings.html', {})
+    
 
-
+#About us page
 # @ratelimit(key='ip', rate='3/m', block=True)
 def about_us(request):
-    # return HttpResponse("this is homepage")
     return render(request, 'about-us.html', {})
 
 
 
-
+#Signup page
 @ratelimit(key='ip', rate='10/h', block=True)
 def signup(request):
     if request.method == 'POST':
@@ -287,7 +270,6 @@ def signup(request):
             messages.error(request, "Username must be under 15 characters")
             # return redirect('/')
             signup_url = request.META['HTTP_REFERER'] + "#signupModal"
-            print(request.META['HTTP_REFERER'])
             # return redirect(request.META['HTTP_REFERER'])
             return redirect(signup_url)
         
@@ -296,30 +278,22 @@ def signup(request):
             messages.error(request, "Username already exists")
             # return redirect('/')
             signup_url = request.META['HTTP_REFERER'] + "#signupModal"
-            print(request.META['HTTP_REFERER'])
-            # return redirect(request.META['HTTP_REFERER'])
             return redirect(signup_url)
         
         # unique email
         if User.objects.filter(email=email).exists():
             messages.error(request, "Email already exists")
-            # return redirect('/')
             signup_url = request.META['HTTP_REFERER'] + "#signupModal"
-            print(request.META['HTTP_REFERER'])
             # return redirect(request.META['HTTP_REFERER'])
             return redirect(signup_url)
         
         if pass1 != pass2:
             messages.error(request, "Password do Not match")
-            # return redirect('/')
-            # return redirect(request.META['HTTP_REFERER'])
             signup_url = request.META['HTTP_REFERER'] + "#signupModal"
             return redirect(signup_url)
         
         if len(pass1)<6:
             messages.error(request, "Password length must be greater than 6")
-            # return redirect('/')
-            # return redirect(request.META['HTTP_REFERER'])
             signup_url = request.META['HTTP_REFERER'] + "#signupModal"
             return redirect(signup_url)
 
@@ -337,11 +311,9 @@ def signup(request):
         if user is not None:
             login(request, user)
             messages.success(request, "Successfully Logged In")
-            # return redirect('/')
             return redirect(request.META['HTTP_REFERER'])
         else:
             messages.error(request, "Invalid Credentials")
-            # return redirect('/')
             # return redirect(request.META['HTTP_REFERER'])
             login_url = request.META['HTTP_REFERER'] + "#loginModal"
             return redirect(login_url)
@@ -353,6 +325,7 @@ def signup(request):
         return HttpResponse('404- Not Found')
 
 
+#User Login Modal
 @ratelimit(key='ip', rate='10/h', block=True)  
 def login_model(request):
     if request.method == 'POST':
@@ -375,13 +348,14 @@ def login_model(request):
             return redirect(login_url)
     return HttpResponse("404- Not Found")
 
+#User Logout Modal
 def logout_model(request):
     logout(request)
     messages.success(request, "Successfully Logged Out")
     # return redirect('/')
     return redirect(request.META['HTTP_REFERER'])
 
-
+# Privacy Page
 def privacy(request):
     # return HttpResponse("this is homepage")
     
@@ -392,6 +366,7 @@ def privacy(request):
     return render(request, 'privacy.html', context)
 
 
+# Submit phone number to access details
 @ratelimit(key='ip', rate='10/h', block=True)
 def submit_number(request):
     global message
@@ -407,11 +382,10 @@ def submit_number(request):
         
         otp_car_id = request.POST['car_id']
         request.session['session_otp_car_id'] = otp_car_id
-        print(request.session['session_phone_number'])
+        
         # session for phone number which is already in database
         if  Client.objects.filter(phone_number=int(request.session['session_phone_number'])).exists():
             request.session['otp_verified'] = True
-            print('You are : ', request.session.get('session_phone_number'))
             # rel_url = 'listing-detail.html/'+str(request.session['session_otp_car_id'])+'/#get_details'
             rel_url = 'listing-detail.html/'+str(request.session['session_otp_car_id'])
 
@@ -419,7 +393,6 @@ def submit_number(request):
         else:
             
             request.session['session_otp']=generate_otp_message(request)
-            print(request.session['session_otp'])
             
             # return HttpResponseRedirect(request.path_info)
             re_url = 'listing-detail.html/'+str(request.session['session_otp_car_id'])+'/#submit_otp'
@@ -427,19 +400,17 @@ def submit_number(request):
             return redirect(re_url)
 
     else:
-        return HttpResponse("404- Not Found for sumit number")
+        return HttpResponse("404- Not Found for submit number")
 
+#Submit the OTP
 def submit_otp(request):
     if request.method == 'POST':
         #get the form parameters
         get_otp = request.POST['get_otp']
-        print(get_otp)
         if int(get_otp) == int(request.session['session_otp']):
             
             client = Client(name=request.session['session_phone_name'], phone_number=int(request.session['session_phone_number']))
             client.save()
-            print("These are your details")
-
             # sessions for otp verified person
             request.session['otp_verified'] = True
 
@@ -452,12 +423,10 @@ def submit_otp(request):
             r_url = 'listing-detail.html/'+str(request.session['session_otp_car_id'])+'/#submit_otp'
             return redirect(r_url)
         
-    return HttpResponse("404- Not Found for submit otp")
+    return HttpResponse("404- Details Not Found for submit otp")
 
 
 
-
+# Desclaimer page
 def disclaimer(request):
-    # return HttpResponse("this is homepage")
-    
     return render(request, 'Disclaimer.html')
