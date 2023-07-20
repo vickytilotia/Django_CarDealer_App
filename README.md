@@ -4,11 +4,11 @@ CarDealer is a web application built with Django, serving as a platform for buyi
 
 ## Features
 
-```bash
+```python
 1. Users upload their vehicle details.
 2. Users can search, sort, and view other available vehicles.
 3. Explore available vehicles and get the owners contact details.
-4. Users can create Account, Login, Signup, and Edit their account details. Delete a Room.
+4. Users can create Account, Login, Signup, and Edit their account details.
 ```
 
 ## Technology Used
