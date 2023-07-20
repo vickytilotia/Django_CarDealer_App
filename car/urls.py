@@ -18,7 +18,8 @@ urlpatterns = [
     path('search_sort.html', views.sort, name = "sort"),
     # path('search_sort.html', views.search_sort, name = "search_sort"),
     path('privacy.html', views.privacy, name = "privacy"),
-    
+
+    @Login - Signup urls
     path('signup', views.signup, name = "signup"),
     path('login', views.login_model, name = "login_model"),
     path('logout', views.logout_model, name = "logout_model"),
@@ -27,7 +28,6 @@ urlpatterns = [
     # for otp verification
     path('submit_number', views.submit_number, name = "submit_number"),
     path('submit_otp', views.submit_otp, name = "submit_otp"),
-
 
     path('disclaimer', views.disclaimer, name = "disclaimer"),
 
